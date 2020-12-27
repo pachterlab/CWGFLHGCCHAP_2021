@@ -1,7 +1,7 @@
 install.packages('rlang')
 if (!requireNamespace("BiocManager", quietly=TRUE))
   + install.packages("BiocManager")
-BiocManager::install(version = "3.10") #Only for R 3.6
+#BiocManager::install(version = "3.10") #Only for R 3.6
 
 BiocManager::install("topGO")
 
@@ -26,7 +26,7 @@ alpha = 0.05/length(allMods) #Bonferroni correction, could correct for all pairw
 getEnrichTerms <- function(geneID2GO, modMetadata, clus){
   mods <- factor(as.integer(modMetadata$X3 == clus)) #Choose gene module to make 'interesting'
   names(mods) <- names(geneID2GO)
-  #str(mods)
+
   
   #Get genes only in module of interest
   clusGenes <- function(mods) {
@@ -42,16 +42,11 @@ getEnrichTerms <- function(geneID2GO, modMetadata, clus){
   #sigGenes(GOdata)
   
   resultFis <- runTest(GOdata, algorithm = "classic", statistic = "fisher")
-  #resultFis
   
   resultWeight <- runTest(GOdata, statistic = "fisher")
-  #resultWeight
-  
-  # pvalsFis <- score(resultFis)
-  # head(pvalsFis)
-  
+
+  #P-values from Weight Algorithm
   pvalsWeight <- score(resultWeight)
-  #head(pvalsWeight)
   
   #hist(pvalsWeight, 50, xlab = "p-values")
   
