@@ -12,6 +12,7 @@ All saved/processed data used for analysis streamed from CaltechData.
 1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing
 
     a) ClickTagDemultiplexing
+    
       * cellRangerClickTagCounts.ipynb
       
       * kallistobusFedStarvedClickTagsProcessing.ipynb
@@ -36,7 +37,7 @@ All saved/processed data used for analysis streamed from CaltechData.
 
 3) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects
   
-    * cellAtlas_Generation_KNN_NCA.ipynb
+    * allDistanceCalculations.ipynb
  
 4) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment
 
@@ -59,10 +60,6 @@ All saved/processed data used for analysis streamed from CaltechData.
 ## Authors
 
 * Tara Chari
-
-
-
-## License
 
 
 
