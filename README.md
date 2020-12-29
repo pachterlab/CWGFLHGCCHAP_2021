@@ -52,7 +52,7 @@ All saved/processed data used for analysis streamed from CaltechData.
     
     * exploreCufflinksData.ipynb
     
-    * cellAtlasNeuronSearch.ipynb 
+    * cellAtlasSearchAndPlot.ipynb
 
 
 
