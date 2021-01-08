@@ -31,10 +31,13 @@ All saved/processed data used for analysis streamed from CaltechData.
     
     * starvation_Analysis.ipynb
     
+    * deSeq2Analysis_StarvationResponse.ipynb
+    
     * neuronSubpop_Analysis.ipynb
     
     * pseudotime_Analysis.ipynb
-
+    
+    
 3) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects
   
     * allDistanceCalculations.ipynb
@@ -42,6 +45,8 @@ All saved/processed data used for analysis streamed from CaltechData.
 4) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment
 
     * stimulation_Analysis.ipynb
+    
+    * deSeq2Analysis_StimulationResponse.ipynb
    
    
 *---------- For (User) Gene Searching and Plotting ----------*
