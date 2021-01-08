@@ -15,9 +15,9 @@ All saved/processed data used for analysis streamed from CaltechData.
     
       * cellRangerClickTagCounts.ipynb
       
-      * kallistobusFedStarvedClickTagsProcessing.ipynb
+      * kallistobusStarvClickTagsProcessing.ipynb
       
-      * stimClickTags.ipynb
+      * kallistobusStimClickTags.ipynb
     
     b) cDNAFiltering
     
