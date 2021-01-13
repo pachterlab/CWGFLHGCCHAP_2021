@@ -1,11 +1,11 @@
 # Analysis of Multiplexed, Single-Cell *Clytia* Medusae Experiments
-Notebooks for Reproducing all Analysis for *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of *Clytia* Medusae Cell Types* Preprint
+Notebooks for reproducing all figures and analysis in the *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of *Clytia* Medusae Cell Types* preprint.
 
 ## Getting Started
 
-All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links included in every notebook.
+All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.
 
-All saved/processed data used for analysis streamed from CaltechData.
+All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
 ## Notebooks Directory Contents
 
@@ -66,9 +66,9 @@ All saved/processed data used for analysis streamed from CaltechData.
 
 * Tara Chari
 
-
-
 ## Acknowledgments
+
+Several of the pre-processing workflows and initial analyses for the project were first implemented by Jase Gehring.
 
 
 
