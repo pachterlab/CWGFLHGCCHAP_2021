@@ -53,9 +53,9 @@ All saved/processed data used for analysis streamed from CaltechData.
 
 5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas
 
-    * cufflinksAnnosAnalysis.ipynb
+    * MARIMBAAnnosAnalysis.ipynb
     
-    * exploreCufflinksData.ipynb
+    * exploreMARIMBAData.ipynb
     
     * cellAtlasSearchAndPlot.ipynb
 
