@@ -9,7 +9,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 
 ## Notebooks Directory Contents
 
-1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing
+1) **Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing**
 
     a) ClickTagDemultiplexing
     
@@ -40,7 +40,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 		* Input: Raw cDNA fastqs
 		* Output: Anndata objects of cell x gene count matrices for each experiment
 	
-2) CellAtlasAnalysis  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment
+2) **CellAtlasAnalysis  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment**
 
     * cellRangerClustering_Starvation.ipynb
     		* Initial clustering of cells from starvation experiment from raw Cell Ranger (cDNA) matrices
@@ -69,7 +69,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
     
   
  
-3) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment
+3) **StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment**
 
     * stimulation_Analysis.ipynb
     		* Clustering of cells from stimulation experiment from kallisto-processed matrices
@@ -81,7 +81,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 		* Input: Clustered anndata object from stimulation_Analysis
 		* Output: Genes that are differentially expressed under stimulation (DI/KCl) ('perturbed' genes)
 
-4) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects
+4) **ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects**
   
     * allDistanceCalculations.ipynb
     		* Calculations for inter- and intra- cluster distances in starvation and stimulation experiments 
@@ -91,7 +91,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
    
 *---------- For (User) Gene Searching and Plotting ----------*
 
-5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas
+5) **SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas**
 
     * MARIMBAAnnosAnalysis.ipynb
     		* Quantification of raw starvation cDNA fastqs with kallisto-bustools workflow and MARIMBA annotation
