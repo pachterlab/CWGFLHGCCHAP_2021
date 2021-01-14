@@ -124,7 +124,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 		- Output: Anndata object of cell x gene count matrices for starvation experiment with clusters and highly variable genes (compared to starvation_Analysis)
 
     
-    - exploreMARIMBAData.ipynb
+    - MARIMBAAtlasSearchAndPlot.ipynb
       
         - Plotting of genes of interest on MARIMBA-quantified anndata object
 		- Input: Clustered Anndata object from MARIMBAAnnosAnalysis, genes of interest
