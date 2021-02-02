@@ -1,6 +1,6 @@
 site_name: WHAMSeqAnalysis
-site_url: https://pachterlab.github.io/CWGFLHGCCHAP_2021/
-site_description: Walkthrough for Whole Organisms Mutliplexed Data Analysis 
+site_url: https://tarachari3.github.io/whamSeqCode/
+site_description: Walkthrough for Whole Organisms Multiplexed Data Analysis 
 site_author: Tara Chari
 repo_url: https://github.com/pachterlab/CWGFLHGCCHAP_2021
 
@@ -46,7 +46,7 @@ nav:
   - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StimulationResponse.md
 - Inter-Experimental Analysis:
   - Comparative Analysis of Cell Atlas Concordance and Perturbation Responses: notebooks/allDistanceCalculations.md
-- Explore Mutliplexed Datasets:
+- Explore Multiplexed Datasets:
   - Generation Cell Atlas with MARIMBA Transcriptome: notebooks/MARIMBAAnnosAnalysis.md
   - Explore MARIMBA-Annotated Cell Atlas: notebooks/MARIMBAAtlasSearchAndPlot.md
   - Explore Original Cell Atlas: notebooks/cellAtlasSearchAndPlot.md
