@@ -1,0 +1,3661 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Walthrough for Whole Organisms Mutliplexed Data Analysis">
+      
+      
+      
+        <meta name="author" content="Tara Chari">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data) - WHAMSeqAnalysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#download-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-header-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WHAMSeqAnalysis
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WHAMSeqAnalysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      
+      <label class="md-nav__link" for="nav-2">
+        ClickTag Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ClickTag Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          ClickTag Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClickTagCounts/" class="md-nav__link">
+        Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStarvClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-clicktag-counts-and-clustering-are-generated" class="md-nav__link">
+    How ClickTag counts and Clustering Are Generated
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-previously-saved-clicktag-adata-to-filter-for-real-cells" class="md-nav__link">
+    Read in previously saved ClickTag Adata to Filter for 'Real' Cells'
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        cDNA Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="cDNA Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          cDNA Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filterStarvCells_ClickTags/" class="md-nav__link">
+        Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistoBusRuns_StarvAndStim/" class="md-nav__link">
+        Quantification of cDNA Counts with kallisto-bustools (All Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Cell Atlas and Perturbation Response
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cell Atlas and Perturbation Response" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Cell Atlas and Perturbation Response
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClustering_Starvation/" class="md-nav__link">
+        Initial Cell Atlas Clustering from Cell Ranger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starvation_Analysis/" class="md-nav__link">
+        Cell Atlas Clustering and Analysis from kallisto-bustools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuronSubpop_Analysis/" class="md-nav__link">
+        Analysis of Neuron Subpopulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudotime_Analysis/" class="md-nav__link">
+        Pseudotime Analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StarvationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Stimulation Data Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stimulation Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Stimulation Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stimulation_Analysis/" class="md-nav__link">
+        Cell Atlas Concordance and Perturbation Response
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StimulationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Inter-Experimental Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Inter-Experimental Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Inter-Experimental Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allDistanceCalculations/" class="md-nav__link">
+        Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Explore Mutliplexed Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Explore Mutliplexed Datasets" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Explore Mutliplexed Datasets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAnnosAnalysis/" class="md-nav__link">
+        Generation Cell Atlas with MARIMBA Transcriptome
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAtlasSearchAndPlot/" class="md-nav__link">
+        Explore MARIMBA-Annotated Cell Atlas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellAtlasSearchAndPlot/" class="md-nav__link">
+        Explore Original Cell Atlas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-clicktag-counts-and-clustering-are-generated" class="md-nav__link">
+    How ClickTag counts and Clustering Are Generated
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-previously-saved-clicktag-adata-to-filter-for-real-cells" class="md-nav__link">
+    Read in previously saved ClickTag Adata to Filter for 'Real' Cells'
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/edit/master/docs/notebooks/kallistobusStimClickTags.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)</h1>
+                
+                <p><a href="https://colab.research.google.com/github/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/Preprocessing/ClickTagDemultiplexing/kallistobusStimClickTags.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h3 id="download-data"><strong>Download Data</strong><a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Install kallisto and bustools
+
+!wget --quiet https://github.com/pachterlab/kallisto/releases/download/v0.46.2/kallisto_linux-v0.46.2.tar.gz
+!tar -xf kallisto_linux-v0.46.2.tar.gz
+!cp kallisto/kallisto /usr/local/bin/
+
+!wget --quiet https://github.com/BUStools/bustools/releases/download/v0.40.0/bustools_linux-v0.40.0.tar.gz
+!tar -xf bustools_linux-v0.40.0.tar.gz
+!cp bustools/bustools /usr/local/bin/
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import requests
+from tqdm import tnrange, tqdm_notebook
+def download_file(doi,ext):
+    url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+    r = requests.get(url).json()
+    netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+    r = requests.get(netcdf_url,stream=True)
+    #Set file name
+    fname = doi.split(&#39;/&#39;)[-1]+ext
+    #Download file with progress bar
+    if r.status_code == 403:
+        print(&quot;File Unavailable&quot;)
+    if &#39;content-length&#39; not in r.headers:
+        print(&quot;Did not get file&quot;)
+    else:
+        with open(fname, &#39;wb&#39;) as f:
+            total_length = int(r.headers.get(&#39;content-length&#39;))
+            pbar = tnrange(int(total_length/1024), unit=&quot;B&quot;)
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    pbar.update()
+                    f.write(chunk)
+        return fname
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Get HiSeq/MiSeq sequencing of ClickTags
+
+download_file(&#39;10.22002/D1.1793&#39;,&#39;.tar.gz&#39;)
+!tar -xf  D1.1793.tar.gz
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">2585793</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Get ClickTag Barcodes/Sequences
+download_file(&#39;10.22002/D1.1831&#39;,&#39;.gz&#39;)
+
+#Get saved embedding of ClickTags
+download_file(&#39;10.22002/D1.1838&#39;,&#39;.gz&#39;)
+
+!gunzip *.gz
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">bar_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">19732</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!pip install --quiet anndata
+!pip install --quiet scanpy
+!pip3 install --quiet leidenalg
+!pip install --quiet louvain
+!pip3 install --quiet biopython
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">[K     |████████████████████████████████| 122kB 4.9MB/s </span>
+<span class="err">[K     |████████████████████████████████| 7.7MB 4.0MB/s </span>
+<span class="err">[K     |████████████████████████████████| 71kB 9.4MB/s </span>
+<span class="err">[K     |████████████████████████████████| 51kB 6.8MB/s </span>
+<span class="err">[?25h  Building wheel for sinfo (setup.py) ... [?25l[?25hdone</span>
+<span class="err">[K     |████████████████████████████████| 2.4MB 4.2MB/s </span>
+<span class="err">[K     |████████████████████████████████| 3.2MB 32.8MB/s </span>
+<span class="err">[K     |████████████████████████████████| 2.2MB 4.3MB/s </span>
+<span class="err">[K     |████████████████████████████████| 2.3MB 4.0MB/s </span>
+<span class="err">[?25h</span>
+</code></pre></div>
+
+<h3 id="import-packages"><strong>Import Packages</strong><a class="headerlink" href="#import-packages" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import pandas as pd
+import copy
+from sklearn.preprocessing import LabelEncoder
+from scipy import sparse
+import scipy
+import numpy as np
+import anndata
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scanpy as sc
+
+from collections import OrderedDict
+from Bio import SeqIO
+import os
+from scipy import io
+import scipy.io as sio
+import time
+
+
+%matplotlib inline
+%config InlineBackend.figure_format = &#39;retina&#39;
+</code></pre></div>
+</td></tr></table>
+<h3 id="how-clicktag-counts-and-clustering-are-generated"><strong>How ClickTag counts and Clustering Are Generated</strong><a class="headerlink" href="#how-clicktag-counts-and-clustering-are-generated" title="Permanent link">&para;</a></h3>
+<p>Use kallisto-bustools to align reads to kallisto index of ClickTag barcode whitelist consisting of sequences hamming distance 1 away from original barcodes</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>## Set parameters - below are parameters for 10x 3&#39; v3 chemistry
+## The cell hashing method uses tags of length 12, we included the variable B (T,C,G) in the end to make it lenght 13
+cell_barcode_length = 16
+UMI_length = 12
+sample_tag_length=11
+
+&quot;&quot;&quot;
+This function returns all sample tags and and their single base mismatches (hamming distance 1).
+ClickTag sequences are provided as a fasta file, and the script indexes the barcode region of the fasta
+&quot;&quot;&quot;
+
+&quot;parse the tags file and output the set of tag sequences&quot;
+
+def parse_tags(filename):
+    odict = OrderedDict()
+    print(&#39;Read the following tags:&#39;)
+    for record in SeqIO.parse(filename, &quot;fasta&quot;):
+        counter=0
+        print(record.seq)
+        odict[record.name] = str(record.seq)[26:26+sample_tag_length]
+        for pos in range(sample_tag_length):
+            letter =str(record.seq)[26+pos]
+            barcode=list(str(record.seq)[26:26+sample_tag_length])
+            if letter==&#39;A&#39;:
+                barcode[pos]=&#39;T&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-1&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;G&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-2&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;C&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-3&#39;] = &quot;&quot;.join(barcode)
+            elif letter==&#39;G&#39;:
+                barcode[pos]=&#39;T&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-1&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;A&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-2&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;C&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-3&#39;] = &quot;&quot;.join(barcode)
+            elif letter==&#39;C&#39;:
+                barcode[pos]=&#39;T&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-1&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;G&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-2&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;A&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-3&#39;] = &quot;&quot;.join(barcode)
+            else:
+                barcode[pos]=&#39;A&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-1&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;G&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-2&#39;] = &quot;&quot;.join(barcode)
+                barcode[pos]=&#39;C&#39;
+                odict[record.name+&#39;-&#39;+str(pos)+&#39;-3&#39;] = &quot;&quot;.join(barcode)
+
+    return odict
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Make kallisto index from ClickTag sequences
+
+!mv D1.1831 70BPbarcodes.fa
+tags_file_path = (&quot;70BPbarcodes.fa&quot;) #70BPbarcodes.fa
+tag_map=parse_tags(tags_file_path)
+
+
+work_folder = &#39;&#39;
+data_folder = &#39;&#39;#/home/jgehring/scRNAseq/clytia/20190405/all_tag_fastqs//
+write_folder = &#39;&#39;
+
+#Write the list of barcodes as a fasta, then make a kallisto index
+!mkdir barcode_corrected_tags
+tagmap_file_path = &quot;barcode_corrected_tags/70BPbarcodes_tagmap.fa&quot;
+
+tagmap_file = open(tagmap_file_path, &quot;w+&quot;)
+for i in list(tag_map.keys()):
+    tagmap_file.write(&quot;&gt;&quot; + i + &quot;\n&quot; +tag_map[i] + &quot;\n&quot;)
+tagmap_file.close()
+
+!kallisto index -i {tagmap_file_path}.idx -k 11 {tagmap_file_path}
+!kallisto inspect {tagmap_file_path}.idx
+</code></pre></div>
+</td></tr></table>
+<p>Run kallisto bus on ClickTag fastqs</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Run kallisto bus on ClickTag fastqs
+
+!mkdir jelly4stim_1_tags_HiSeq
+
+write_folder = &#39;jelly4stim_1_tags_HiSeq&#39;
+
+!kallisto bus -i {tagmap_file_path}.idx -o {write_folder} -x 10xv3 -t 20 {os.path.join(data_folder,&#39;jelly4stim1MiSeqHiSeq_tags_R1.fastq&#39;)} {os.path.join(data_folder,&#39;jelly4stim1MiSeqHiSeq_tags_R2.fastq&#39;)}
+
+#sort bus file
+!bustools sort -o {os.path.join(write_folder,&#39;output_sorted.bus&#39;)} {os.path.join(write_folder,&#39;output.bus&#39;)}
+
+# convert the sorted busfile to txt
+!bustools text -o {os.path.join(write_folder,&#39;output_sorted.txt&#39;)} {os.path.join(write_folder,&#39;output_sorted.bus&#39;)}
+
+
+!mkdir jelly4stim_2_tags_HiSeq
+
+write_folder = &#39;jelly4stim_2_tags_HiSeq&#39;
+
+!kallisto bus -i {tagmap_file_path}.idx -o {write_folder} -x 10xv3 -t 20 {os.path.join(data_folder,&#39;jelly4stim2MiSeqHiSeq_tags_R1.fastq&#39;)} {os.path.join(data_folder,&#39;jelly4stim2MiSeqHiSeq_tags_R2.fastq&#39;)} \
+
+#sort bus file
+!bustools sort -o {os.path.join(write_folder,&#39;output_sorted.bus&#39;)} {os.path.join(write_folder,&#39;output.bus&#39;)}
+
+# convert the sorted busfile to txt
+!bustools text -o {os.path.join(write_folder,&#39;output_sorted.txt&#39;)} {os.path.join(write_folder,&#39;output_sorted.bus&#39;)}
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="nl">mkdir</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="err">‘</span><span class="n">jelly4stim_1_tags_HiSeq</span><span class="err">’:</span><span class="w"> </span><span class="k">File</span><span class="w"> </span><span class="ow">exists</span><span class="w"></span>
+<span class="nl">mv</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="s1">&#39;tw7h9xi94348gsultf0owb6q4mp1ehlf&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+<span class="nl">mv</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="s1">&#39;bmu19su5ouc6vze3p00pobb665q1pi3z&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+
+<span class="nl">Warning</span><span class="p">:</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">asked</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">cores</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">machine</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mer</span><span class="w"> </span><span class="nl">length</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nl">targets</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="nl">mers</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">equivalence</span><span class="w"> </span><span class="nl">classes</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">jelly4stim1MiSeqHiSeq_tags_R1</span><span class="p">.</span><span class="n">fastq</span><span class="w"></span>
+<span class="w">                               </span><span class="n">jelly4stim1MiSeqHiSeq_tags_R2</span><span class="p">.</span><span class="n">fastq</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">finding</span><span class="w"> </span><span class="n">pseudoalignments</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">done</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="mi">904</span><span class="p">,</span><span class="mi">784</span><span class="w"> </span><span class="k">reads</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">027</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="n">pseudoaligned</span><span class="w"></span>
+
+<span class="k">Read</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">8500027</span><span class="w"> </span><span class="n">BUS</span><span class="w"> </span><span class="n">records</span><span class="w"></span>
+<span class="k">Read</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">7801303</span><span class="w"> </span><span class="n">BUS</span><span class="w"> </span><span class="n">records</span><span class="w"></span>
+<span class="nl">mkdir</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="err">‘</span><span class="n">jelly4stim_2_tags_HiSeq</span><span class="err">’:</span><span class="w"> </span><span class="k">File</span><span class="w"> </span><span class="ow">exists</span><span class="w"></span>
+<span class="nl">mv</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="s1">&#39;pmsgi1o664n5gynqggnulstje1djxcwb&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+<span class="nl">mv</span><span class="p">:</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="s1">&#39;6ogvqwclzev3dsri2zv46yqrlutucrl1&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">directory</span><span class="w"></span>
+
+<span class="nl">Warning</span><span class="p">:</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">asked</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">cores</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">machine</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mer</span><span class="w"> </span><span class="nl">length</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nl">targets</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="nl">mers</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">equivalence</span><span class="w"> </span><span class="nl">classes</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">jelly4stim2MiSeqHiSeq_tags_R1</span><span class="p">.</span><span class="n">fastq</span><span class="w"></span>
+<span class="w">                               </span><span class="n">jelly4stim2MiSeqHiSeq_tags_R2</span><span class="p">.</span><span class="n">fastq</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">finding</span><span class="w"> </span><span class="n">pseudoalignments</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">done</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="mi">085</span><span class="p">,</span><span class="mi">603</span><span class="w"> </span><span class="k">reads</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">366</span><span class="p">,</span><span class="mi">055</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="n">pseudoaligned</span><span class="w"></span>
+
+<span class="k">Read</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">4366055</span><span class="w"> </span><span class="n">BUS</span><span class="w"> </span><span class="n">records</span><span class="w"></span>
+<span class="k">Read</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">4116905</span><span class="w"> </span><span class="n">BUS</span><span class="w"> </span><span class="n">records</span><span class="w"></span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>write_folder = &#39;&#39; #/home/jgehring/scRNAseq/clytia/20190405/
+
+bus_data_jelly1 = pd.read_csv(os.path.join(write_folder,&#39;jelly4stim_1_tags_HiSeq/output_sorted.txt&#39;), delimiter=&#39;\t&#39;, header=None, names = [&#39;barcode&#39;, &#39;umi&#39;, &#39;tag_eqclass&#39;, &#39;multiplicity&#39;])
+bus_data_jelly1.head()
+
+bus_data_jelly1
+
+bus_data_jelly2 = pd.read_csv(os.path.join(write_folder,&#39;jelly4stim_2_tags_HiSeq/output_sorted.txt&#39;), delimiter=&#39;\t&#39;, header=None, names = [&#39;barcode&#39;, &#39;umi&#39;, &#39;tag_eqclass&#39;, &#39;multiplicity&#39;])
+bus_data_jelly2.head()
+
+tag_map_df = pd.DataFrame.from_dict(tag_map, orient = &#39;index&#39;).reset_index()
+tag_map_df.columns=[&#39;tagname&#39;,&#39;tagseq&#39;]
+tag_map_df[&#39;ClickTag&#39;] = tag_map_df[&#39;tagname&#39;].str.split(&#39;-&#39;).str.get(0)
+tag_map_df.head()
+
+bus_data_jelly1[&#39;tag&#39;]= bus_data_jelly1[&#39;tag_eqclass&#39;].map(tag_map_df[&#39;ClickTag&#39;])
+bus_data_jelly1.head()
+
+bus_data_jelly2[&#39;tag&#39;]= bus_data_jelly2[&#39;tag_eqclass&#39;].map(tag_map_df[&#39;ClickTag&#39;])
+bus_data_jelly2.head()
+
+
+
+print(&#39;Counting UMIs&#39;)
+counted_data_jelly1 = bus_data_jelly1.groupby([&#39;barcode&#39;, &#39;tag&#39;])[&#39;umi&#39;].count().reset_index()
+counted_data_jelly1.rename(columns={&#39;umi&#39;:&#39;umi_counts&#39;}, inplace = True)
+counted_data_jelly1.head()
+
+print(&#39;Counting UMIs&#39;)
+counted_data_jelly2 = bus_data_jelly2.groupby([&#39;barcode&#39;, &#39;tag&#39;])[&#39;umi&#39;].count().reset_index()
+counted_data_jelly2.rename(columns={&#39;umi&#39;:&#39;umi_counts&#39;}, inplace = True)
+counted_data_jelly2.head()
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Counting UMIs</span>
+<span class="err">Counting UMIs</span>
+</code></pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>barcode</th>
+      <th>tag</th>
+      <th>umi_counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AAAAAAAAAAAAAAAA</td>
+      <td>BC_36</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AAAAACAGCTACGTTT</td>
+      <td>BC_38</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AAAAACAGGCACTAGT</td>
+      <td>BC_30</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AAAAACATTTTTTTTT</td>
+      <td>BC_38</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AAAAACCACATGAAAA</td>
+      <td>BC_38</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!mkdir counted_tag_data
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">mkdir</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">create</span> <span class="n">directory</span> <span class="err">‘</span><span class="n">counted_tag_data</span><span class="err">’</span><span class="o">:</span> <span class="n">File</span> <span class="n">exists</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>data_dict={&#39;counted_data_jelly1&#39;:counted_data_jelly1, &#39;counted_data_jelly2&#39;:counted_data_jelly2}
+counted_data_jelly1[&#39;barcode&#39;]=[x+&#39;-1&#39; for x in counted_data_jelly1[&#39;barcode&#39;].values]
+counted_data_jelly2[&#39;barcode&#39;]=[x+&#39;-2&#39; for x in counted_data_jelly2[&#39;barcode&#39;].values]
+
+
+
+for counted_data in data_dict:
+
+    le_barcode = LabelEncoder()
+    barcode_idx =le_barcode.fit_transform(data_dict[counted_data][&#39;barcode&#39;].values)
+    print(&#39;Barcode index shape:&#39;, barcode_idx.shape)
+
+    le_umi = LabelEncoder()
+    umi_idx = le_umi.fit_transform(data_dict[counted_data][&#39;umi_counts&#39;].values)
+    print(&#39;UMI index shape:&#39;, umi_idx.shape)
+
+    le_tag = LabelEncoder()
+    tag_idx = le_tag.fit_transform(data_dict[counted_data][&#39;tag&#39;].values)
+    print(&#39;Tag index shape:&#39;, tag_idx.shape)
+
+    # convert data to csr matrix
+    csr_matrix_data = scipy.sparse.csr_matrix((data_dict[counted_data][&#39;umi_counts&#39;].values,(barcode_idx,tag_idx)))
+
+
+    scipy.io.mmwrite(os.path.join(write_folder,&#39;counted_tag_data/&#39; + counted_data + &#39;.mtx&#39;),csr_matrix_data)
+    print(&#39;Saved sparse csr matrix&#39;)
+
+    pd.DataFrame(le_tag.classes_).to_csv(os.path.join(write_folder,&#39;counted_tag_data/&#39; + counted_data + &#39;_ClickTag_tag_labels.csv&#39;), index = False, header = False)
+    pd.DataFrame(le_barcode.classes_).to_csv(os.path.join(write_folder,&#39;counted_tag_data/&#39; + counted_data + &#39;_ClickTag_barcode_labels.csv&#39;), index = False, header = False)
+    print(&#39;Saved cell barcode and hashtag labels&#39;)
+    print(&#39;Number of unique cell barcodes seen:&#39;, len(le_barcode.classes_))
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Barcode index shape: (1853354,)</span>
+<span class="err">UMI index shape: (1853354,)</span>
+<span class="err">Tag index shape: (1853354,)</span>
+<span class="err">Saved sparse csr matrix</span>
+<span class="err">Saved cell barcode and hashtag labels</span>
+<span class="err">Number of unique cell barcodes seen: 439363</span>
+<span class="err">Barcode index shape: (977213,)</span>
+<span class="err">UMI index shape: (977213,)</span>
+<span class="err">Tag index shape: (977213,)</span>
+<span class="err">Saved sparse csr matrix</span>
+<span class="err">Saved cell barcode and hashtag labels</span>
+<span class="err">Number of unique cell barcodes seen: 202035</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Clicktag for both 10x lanes concatenated
+
+ClickTagCountsmat=scipy.io.mmread(os.path.join(write_folder,&#39;counted_tag_data/counted_data_jelly1.mtx&#39;))
+ClickTagCounts=pd.DataFrame(ClickTagCountsmat.toarray(), 
+                            index=list(pd.read_csv(os.path.join(write_folder,&#39;counted_tag_data/counted_data_jelly1_ClickTag_barcode_labels.csv&#39;), header=None).loc[:,0]),
+                            columns=list(pd.read_csv(os.path.join(write_folder,&#39;counted_tag_data/&#39; + counted_data + &#39;_ClickTag_tag_labels.csv&#39;), header=None).loc[:,0]))
+
+ClickTagCountsmat=scipy.io.mmread(os.path.join(write_folder,&#39;counted_tag_data/counted_data_jelly2.mtx&#39;))
+ClickTagCounts=ClickTagCounts.append(pd.DataFrame(ClickTagCountsmat.toarray(), 
+                            index=list(pd.read_csv(os.path.join(write_folder,&#39;counted_tag_data/counted_data_jelly2_ClickTag_barcode_labels.csv&#39;), header=None).loc[:,0]),
+                            columns=list(pd.read_csv(os.path.join(write_folder,&#39;counted_tag_data/&#39; + counted_data + &#39;_ClickTag_tag_labels.csv&#39;), header=None).loc[:,0])))
+
+
+ClickTagCounts
+</code></pre></div>
+</td></tr></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BC_21</th>
+      <th>BC_22</th>
+      <th>BC_23</th>
+      <th>BC_24</th>
+      <th>BC_25</th>
+      <th>BC_26</th>
+      <th>BC_27</th>
+      <th>BC_28</th>
+      <th>BC_29</th>
+      <th>BC_30</th>
+      <th>BC_31</th>
+      <th>BC_32</th>
+      <th>BC_33</th>
+      <th>BC_34</th>
+      <th>BC_35</th>
+      <th>BC_36</th>
+      <th>BC_37</th>
+      <th>BC_38</th>
+      <th>BC_39</th>
+      <th>BC_40</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AAAAAAAGTTTGAATT-1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AAAAAACGTTTTGGCC-1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AAAAACGTCGCAGTCC-1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AAAAACGTTGTGGCCT-1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AAAAATCTTTTTTTTT-1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>TTTTTTGAGGCTCTAT-2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>TTTTTTGCAGAATGTA-2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>TTTTTTTTTAACATCC-2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>TTTTTTTTTTGTTTTT-2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>TTTTTTTTTTTTTTTT-2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>641398 rows × 20 columns</p>
+</div>
+
+<p>Use UMI count knee-plot to filter for high-quality ClickTagged cells</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ClickTag_counts_sorted = copy.deepcopy(ClickTagCounts.T.sum())
+ClickTag_counts_sorted = ClickTag_counts_sorted.sort_values(ascending=False)
+plt.plot(ClickTag_counts_sorted.apply(np.log10),np.log10(range(len(ClickTag_counts_sorted))))
+plt.axhline(np.log10(50000))
+plt.show()
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ClickTag_counts_filtered=ClickTagCounts.loc[list(ClickTag_counts_sorted[:50000].index)]
+ClickTag_counts_filtered=ClickTag_counts_filtered.iloc[:,4:]
+filtered_ClickTag_counts=ClickTag_counts_filtered.T
+filtered_ClickTag_counts
+
+
+
+hits = 0
+counter = 1
+for barcode in filtered_ClickTag_counts.index:
+    for i in filtered_ClickTag_counts:    
+        if filtered_ClickTag_counts[i].idxmax() == barcode:
+            if hits ==0:
+                sortedheatmap_dtf=pd.DataFrame({counter:filtered_ClickTag_counts[i]})
+                hits+=1
+                counter+=1
+            else:
+               sortedheatmap_dtf = sortedheatmap_dtf.assign(i = filtered_ClickTag_counts[i])
+               sortedheatmap_dtf.rename(columns = {&#39;i&#39;:counter}, inplace = True)
+               counter+=1
+
+filtered_ClickTag_counts=copy.deepcopy(sortedheatmap_dtf)
+
+percentClickTags_counts = copy.deepcopy(filtered_ClickTag_counts)
+for i in filtered_ClickTag_counts:
+        percentClickTags_counts[i] = filtered_ClickTag_counts[i]/filtered_ClickTag_counts[i].sum()
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:3: RuntimeWarning: divide by zero encountered in log10</span>
+<span class="err">  This is separate from the ipykernel package so we can avoid doing imports until</span>
+</code></pre></div>
+
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_21_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>fig, ax = plt.subplots(figsize=(10,10))  
+sns.heatmap(np.log1p(filtered_ClickTag_counts), cmap=&#39;viridis&#39;)
+plt.show()
+
+fig, ax = plt.subplots(figsize=(10,10))  
+sns.heatmap(percentClickTags_counts, cmap=&#39;viridis&#39;)
+plt.show()
+
+filtered_ClickTag_counts
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_22_0.png" /></p>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_22_1.png" /></p>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>...</th>
+      <th>49961</th>
+      <th>49962</th>
+      <th>49963</th>
+      <th>49964</th>
+      <th>49965</th>
+      <th>49966</th>
+      <th>49967</th>
+      <th>49968</th>
+      <th>49969</th>
+      <th>49970</th>
+      <th>49971</th>
+      <th>49972</th>
+      <th>49973</th>
+      <th>49974</th>
+      <th>49975</th>
+      <th>49976</th>
+      <th>49977</th>
+      <th>49978</th>
+      <th>49979</th>
+      <th>49980</th>
+      <th>49981</th>
+      <th>49982</th>
+      <th>49983</th>
+      <th>49984</th>
+      <th>49985</th>
+      <th>49986</th>
+      <th>49987</th>
+      <th>49988</th>
+      <th>49989</th>
+      <th>49990</th>
+      <th>49991</th>
+      <th>49992</th>
+      <th>49993</th>
+      <th>49994</th>
+      <th>49995</th>
+      <th>49996</th>
+      <th>49997</th>
+      <th>49998</th>
+      <th>49999</th>
+      <th>50000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BC_25</th>
+      <td>1025</td>
+      <td>435</td>
+      <td>344</td>
+      <td>235</td>
+      <td>231</td>
+      <td>205</td>
+      <td>220</td>
+      <td>204</td>
+      <td>199</td>
+      <td>226</td>
+      <td>171</td>
+      <td>236</td>
+      <td>183</td>
+      <td>172</td>
+      <td>128</td>
+      <td>127</td>
+      <td>163</td>
+      <td>171</td>
+      <td>180</td>
+      <td>135</td>
+      <td>174</td>
+      <td>152</td>
+      <td>188</td>
+      <td>110</td>
+      <td>134</td>
+      <td>185</td>
+      <td>162</td>
+      <td>201</td>
+      <td>172</td>
+      <td>165</td>
+      <td>137</td>
+      <td>171</td>
+      <td>144</td>
+      <td>133</td>
+      <td>146</td>
+      <td>121</td>
+      <td>145</td>
+      <td>137</td>
+      <td>133</td>
+      <td>142</td>
+      <td>...</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>BC_26</th>
+      <td>2</td>
+      <td>9</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>7</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>47</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC_27</th>
+      <td>10</td>
+      <td>4</td>
+      <td>8</td>
+      <td>26</td>
+      <td>11</td>
+      <td>3</td>
+      <td>6</td>
+      <td>14</td>
+      <td>13</td>
+      <td>7</td>
+      <td>0</td>
+      <td>9</td>
+      <td>6</td>
+      <td>14</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>157</td>
+      <td>38</td>
+      <td>1</td>
+      <td>4</td>
+      <td>10</td>
+      <td>2</td>
+      <td>7</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>3</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>45</td>
+      <td>123</td>
+      <td>...</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_28</th>
+      <td>15</td>
+      <td>11</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>9</td>
+      <td>0</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+      <td>3</td>
+      <td>6</td>
+      <td>11</td>
+      <td>7</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>6</td>
+      <td>1</td>
+      <td>2</td>
+      <td>109</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>7</td>
+      <td>6</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>13</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC_29</th>
+      <td>7</td>
+      <td>5</td>
+      <td>8</td>
+      <td>223</td>
+      <td>11</td>
+      <td>14</td>
+      <td>8</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>7</td>
+      <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>125</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>158</td>
+      <td>6</td>
+      <td>4</td>
+      <td>12</td>
+      <td>136</td>
+      <td>4</td>
+      <td>33</td>
+      <td>131</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>112</td>
+      <td>3</td>
+      <td>115</td>
+      <td>3</td>
+      <td>1</td>
+      <td>50</td>
+      <td>6</td>
+      <td>3</td>
+      <td>3</td>
+      <td>47</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC_30</th>
+      <td>14</td>
+      <td>4</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>132</td>
+      <td>1</td>
+      <td>4</td>
+      <td>64</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td>7</td>
+      <td>7</td>
+      <td>96</td>
+      <td>3</td>
+      <td>48</td>
+      <td>4</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>8</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>10</td>
+      <td>5</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>BC_31</th>
+      <td>7</td>
+      <td>9</td>
+      <td>269</td>
+      <td>5</td>
+      <td>225</td>
+      <td>3</td>
+      <td>138</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+      <td>9</td>
+      <td>6</td>
+      <td>4</td>
+      <td>7</td>
+      <td>37</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>8</td>
+      <td>11</td>
+      <td>5</td>
+      <td>106</td>
+      <td>3</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>8</td>
+      <td>13</td>
+      <td>6</td>
+      <td>2</td>
+      <td>81</td>
+      <td>2</td>
+      <td>126</td>
+      <td>1</td>
+      <td>28</td>
+      <td>2</td>
+      <td>...</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_32</th>
+      <td>16</td>
+      <td>20</td>
+      <td>11</td>
+      <td>26</td>
+      <td>41</td>
+      <td>10</td>
+      <td>91</td>
+      <td>5</td>
+      <td>8</td>
+      <td>8</td>
+      <td>18</td>
+      <td>18</td>
+      <td>7</td>
+      <td>5</td>
+      <td>20</td>
+      <td>10</td>
+      <td>7</td>
+      <td>4</td>
+      <td>19</td>
+      <td>21</td>
+      <td>23</td>
+      <td>33</td>
+      <td>19</td>
+      <td>25</td>
+      <td>19</td>
+      <td>16</td>
+      <td>6</td>
+      <td>4</td>
+      <td>5</td>
+      <td>27</td>
+      <td>8</td>
+      <td>17</td>
+      <td>5</td>
+      <td>5</td>
+      <td>19</td>
+      <td>8</td>
+      <td>22</td>
+      <td>4</td>
+      <td>39</td>
+      <td>22</td>
+      <td>...</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+      <td>3</td>
+      <td>7</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_33</th>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>13</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>17</td>
+      <td>7</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>2</td>
+      <td>14</td>
+      <td>1</td>
+      <td>8</td>
+      <td>13</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>12</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>13</td>
+      <td>1</td>
+      <td>7</td>
+      <td>10</td>
+      <td>15</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>10</td>
+      <td>8</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>BC_34</th>
+      <td>10</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>8</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>14</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>13</td>
+      <td>9</td>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>11</td>
+      <td>11</td>
+      <td>8</td>
+      <td>2</td>
+      <td>0</td>
+      <td>12</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>14</td>
+      <td>15</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>12</td>
+      <td>1</td>
+      <td>2</td>
+      <td>11</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>15</td>
+      <td>15</td>
+      <td>9</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_35</th>
+      <td>19</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>13</td>
+      <td>9</td>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>12</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>7</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>6</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_36</th>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>11</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>5</td>
+      <td>17</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>8</td>
+      <td>14</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>13</td>
+      <td>0</td>
+      <td>1</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_37</th>
+      <td>697</td>
+      <td>396</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>181</td>
+      <td>0</td>
+      <td>182</td>
+      <td>182</td>
+      <td>181</td>
+      <td>171</td>
+      <td>0</td>
+      <td>182</td>
+      <td>168</td>
+      <td>0</td>
+      <td>116</td>
+      <td>157</td>
+      <td>171</td>
+      <td>0</td>
+      <td>133</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>137</td>
+      <td>104</td>
+      <td>123</td>
+      <td>0</td>
+      <td>132</td>
+      <td>0</td>
+      <td>132</td>
+      <td>126</td>
+      <td>0</td>
+      <td>108</td>
+      <td>0</td>
+      <td>127</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>6</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+      <td>6</td>
+      <td>7</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>8</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td>8</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>BC_38</th>
+      <td>103</td>
+      <td>51</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>70</td>
+      <td>0</td>
+      <td>35</td>
+      <td>25</td>
+      <td>19</td>
+      <td>32</td>
+      <td>0</td>
+      <td>28</td>
+      <td>39</td>
+      <td>0</td>
+      <td>59</td>
+      <td>30</td>
+      <td>26</td>
+      <td>0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>17</td>
+      <td>16</td>
+      <td>0</td>
+      <td>22</td>
+      <td>0</td>
+      <td>19</td>
+      <td>19</td>
+      <td>0</td>
+      <td>36</td>
+      <td>0</td>
+      <td>22</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>9</td>
+      <td>11</td>
+      <td>10</td>
+      <td>10</td>
+      <td>11</td>
+      <td>7</td>
+      <td>13</td>
+      <td>13</td>
+      <td>12</td>
+      <td>11</td>
+      <td>10</td>
+      <td>8</td>
+      <td>4</td>
+      <td>13</td>
+      <td>12</td>
+      <td>9</td>
+      <td>12</td>
+      <td>14</td>
+      <td>11</td>
+      <td>9</td>
+      <td>15</td>
+      <td>8</td>
+      <td>11</td>
+      <td>9</td>
+      <td>12</td>
+      <td>6</td>
+      <td>12</td>
+      <td>13</td>
+      <td>9</td>
+      <td>11</td>
+      <td>11</td>
+      <td>8</td>
+      <td>8</td>
+      <td>10</td>
+      <td>14</td>
+      <td>11</td>
+      <td>8</td>
+      <td>14</td>
+      <td>8</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>BC_39</th>
+      <td>15</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>5</td>
+      <td>8</td>
+      <td>4</td>
+      <td>13</td>
+      <td>0</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+      <td>11</td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>9</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>17</td>
+      <td>15</td>
+      <td>17</td>
+      <td>17</td>
+      <td>19</td>
+      <td>12</td>
+      <td>18</td>
+      <td>14</td>
+      <td>13</td>
+      <td>14</td>
+      <td>13</td>
+      <td>10</td>
+      <td>15</td>
+      <td>16</td>
+      <td>13</td>
+      <td>17</td>
+      <td>15</td>
+      <td>16</td>
+      <td>14</td>
+      <td>11</td>
+      <td>16</td>
+      <td>17</td>
+      <td>15</td>
+      <td>16</td>
+      <td>16</td>
+      <td>15</td>
+      <td>14</td>
+      <td>15</td>
+      <td>17</td>
+      <td>14</td>
+      <td>12</td>
+      <td>15</td>
+      <td>20</td>
+      <td>20</td>
+      <td>16</td>
+      <td>14</td>
+      <td>15</td>
+      <td>15</td>
+      <td>9</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>BC_40</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 50000 columns</p>
+</div>
+
+<p>Cluster cells to find clear ClickTag 'expression'</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>adata = sc.AnnData(ClickTag_counts_filtered)
+adata.var_names= list(ClickTag_counts_filtered.columns)
+adata.obs_names= list(ClickTag_counts_filtered[:50000].index)
+#pd.read_csv(os.path.join(write_folder,&#39;counted_tag_data/counted_data_jelly2_ClickTag_barcode_labels.csv&#39;), header=None, sep=&#39;,&#39;)[:15000][0].tolist()
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>adata
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">50000</span> <span class="err">×</span> <span class="mi">16</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>adata
+
+sc.pp.filter_genes(adata, min_counts=0)
+sc.pp.normalize_per_cell(adata, counts_per_cell_after=10000)
+adata.obs[&#39;n_countslog&#39;]=np.log(adata.obs[&#39;n_counts&#39;])
+sc.pp.log1p(adata)
+sc.pp.regress_out(adata, [&#39;n_counts&#39;])
+sc.tl.tsne(adata, perplexity=30, use_rep=None)
+
+
+
+
+sc.pp.neighbors(adata)
+sc.tl.umap(adata)
+sc.tl.louvain(adata, resolution=2)
+sc.pl.tsne(adata, color=&#39;n_countslog&#39;)
+
+sc.set_figure_params(dpi=120)
+sc.pl.tsne(adata,color=[&#39;louvain&#39;])
+
+
+
+# sc.pl.tsne(adata, color=adata.var_names)
+
+# for i in range(20):
+#     sc.pl.violin(adata[adata.obs[&#39;louvain&#39;].isin([str(i)])], keys=adata.var_names)
+
+# sc.pl.tsne(adata, color=[&#39;louvain&#39;],palette=&#39;rainbow&#39;,legend_loc=&#39;on data&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">statsmodels</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">_testing</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span> <span class="ne">FutureWarning</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">testing</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="o">.</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">functions</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">public</span> <span class="n">API</span> <span class="n">at</span> <span class="n">pandas</span><span class="o">.</span><span class="n">testing</span> <span class="n">instead</span><span class="o">.</span>
+  <span class="kn">import</span> <span class="nn">pandas.util.testing</span> <span class="kn">as</span> <span class="nn">tm</span>
+
+
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">Consider</span> <span class="n">installing</span> <span class="n">the</span> <span class="n">package</span> <span class="n">MulticoreTSNE</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">DmitryUlyanov</span><span class="o">/</span><span class="n">Multicore</span><span class="o">-</span><span class="n">TSNE</span><span class="p">)</span><span class="o">.</span> <span class="n">Even</span> <span class="k">for</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span> <span class="n">this</span> <span class="n">speeds</span> <span class="n">up</span> <span class="n">the</span> <span class="n">computation</span> <span class="n">considerably</span> <span class="ow">and</span> <span class="n">might</span> <span class="k">yield</span> <span class="n">better</span> <span class="n">converged</span> <span class="n">results</span><span class="o">.</span>
+</code></pre></div>
+
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_26_2.png" /></p>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_26_3.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pl.umap(adata, color=&#39;louvain&#39;)
+sc.pl.umap(adata, color=&#39;n_countslog&#39;)
+sc.pl.umap(adata, color=adata.var_names)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_27_0.png" /></p>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_27_1.png" /></p>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_27_2.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(adata, resolution=0.11)#0.15
+sc.pl.umap(adata, color=&#39;louvain&#39;)
+#adata.write(&#39;adata.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_28_0.png" /></p>
+<h3 id="read-in-previously-saved-clicktag-adata-to-filter-for-real-cells"><strong>Read in previously saved ClickTag Adata to Filter for 'Real' Cells'</strong><a class="headerlink" href="#read-in-previously-saved-clicktag-adata-to-filter-for-real-cells" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>adata = anndata.read(&#39;D1.1838&#39;)
+sc.pl.umap(adata, color=&#39;louvain&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">anndata</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="nl">py</span><span class="p">:</span><span class="mi">182</span><span class="err">:</span><span class="w"> </span><span class="nl">FutureWarning</span><span class="p">:</span><span class="w"> </span><span class="n">Moving</span><span class="w"> </span><span class="k">element</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">.</span><span class="n">uns</span><span class="o">[</span><span class="n">&#39;neighbors&#39;</span><span class="o">][</span><span class="n">&#39;distances&#39;</span><span class="o">]</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">.</span><span class="n">obsp</span><span class="o">[</span><span class="n">&#39;distances&#39;</span><span class="o">]</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="n">matrices</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">FutureWarning</span><span class="p">,</span><span class="w"></span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">anndata</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">__init__</span><span class="p">.</span><span class="nl">py</span><span class="p">:</span><span class="mi">182</span><span class="err">:</span><span class="w"> </span><span class="nl">FutureWarning</span><span class="p">:</span><span class="w"> </span><span class="n">Moving</span><span class="w"> </span><span class="k">element</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="p">.</span><span class="n">uns</span><span class="o">[</span><span class="n">&#39;neighbors&#39;</span><span class="o">][</span><span class="n">&#39;connectivities&#39;</span><span class="o">]</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">.</span><span class="n">obsp</span><span class="o">[</span><span class="n">&#39;connectivities&#39;</span><span class="o">]</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="n">matrices</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="w"></span>
+<span class="w">  </span><span class="n">FutureWarning</span><span class="p">,</span><span class="w"></span>
+</code></pre></div>
+
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_30_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sub1=adata[adata.obs[&#39;louvain&#39;].isin([&#39;0&#39;])]
+sub2=adata[adata.obs[&#39;louvain&#39;].isin([&#39;1&#39;,&#39;6&#39;,&#39;9&#39;])]
+sub3=adata[adata.obs[&#39;louvain&#39;].isin([&#39;3&#39;])]
+sub4=adata[adata.obs[&#39;louvain&#39;].isin([&#39;4&#39;])]
+sub5=adata[adata.obs[&#39;louvain&#39;].isin([&#39;5&#39;])]
+sub6=adata[adata.obs[&#39;louvain&#39;].isin([&#39;7&#39;])]
+sub7=adata[adata.obs[&#39;louvain&#39;].isin([&#39;8&#39;])]
+sub8=adata[adata.obs[&#39;louvain&#39;].isin([&#39;10&#39;])]
+sub9=adata[adata.obs[&#39;louvain&#39;].isin([&#39;11&#39;])]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub1, resolution=0.5)
+sc.tl.umap(sub1)
+sc.pl.umap(sub1, color=&#39;louvain&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Trying to set attribute `.obs` of view, copying.</span>
+</code></pre></div>
+
+<p><img alt="png" src="../kallistobusStimClickTags_files/kallistobusStimClickTags_32_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub1, resolution=0.5)
+sc.tl.umap(sub1)
+sc.pl.umap(sub1, color=&#39;louvain&#39;)
+
+sub1dict={}
+sc.pl.umap(sub1, color=sub1.var_names)
+
+sub1keeps = sub1[~sub1.obs[&#39;louvain&#39;].isin([&#39;3&#39;])]
+sc.pl.umap(sub1keeps, color=&#39;louvain&#39;)
+
+sub1keeps_orgIDdict={&#39;0&#39;:&#39;8&#39;, &#39;1&#39;:&#39;5&#39;, &#39;2&#39;:&#39;6&#39;,&#39;4&#39;:&#39;3&#39;, &#39;5&#39;:&#39;4&#39;, &#39;6&#39;:&#39;7&#39;, &#39;7&#39;:&#39;1&#39;, &#39;8&#39;:&#39;2&#39;, &#39;9&#39;:&#39;9&#39;, &#39;10&#39;:&#39;10&#39;, &#39;11&#39;:&#39;11&#39;,&#39;12&#39;:&#39;12&#39;,&#39;louvain&#39;:&#39;org&#39;}
+sub1keeps.obs[&#39;orgID&#39;]=[sub1keeps_orgIDdict.get(x) for x in list(sub1keeps.obs[&#39;louvain&#39;])]
+
+sc.pl.umap(sub1keeps, color=[&#39;orgID&#39;])
+sc.pl.umap(sub1keeps, color=sub1.var_names)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub2, resolution=0.5)
+sc.tl.umap(sub2)
+sc.pl.umap(sub2, color=[&#39;louvain&#39;, &#39;n_countslog&#39;])
+
+# Skip to sub 3
+sc.tl.louvain(sub3, resolution=0.5)
+sc.tl.umap(sub3)
+sc.pl.umap(sub3, color=&#39;louvain&#39;)
+
+sc.pl.umap(sub3, color=sub1.var_names)
+
+
+sub3_orgIDdict={&#39;0&#39;:&#39;5&#39;, &#39;1&#39;:&#39;8&#39;, &#39;2&#39;:&#39;6&#39;, &#39;3&#39;:&#39;11&#39;, &#39;4&#39;:&#39;3&#39;, &#39;5&#39;:&#39;7&#39;, &#39;6&#39;:&#39;1&#39;, &#39;7&#39;:&#39;9&#39;, &#39;8&#39;:&#39;4&#39;, &#39;9&#39;:&#39;10&#39;, &#39;10&#39;:&#39;12&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub3.obs[&#39;orgID&#39;]=[sub3_orgIDdict.get(x) for x in list(sub3.obs[&#39;louvain&#39;])]
+
+
+sc.pl.umap(sub3, color=[&#39;orgID&#39;])
+sc.pl.umap(sub3, color=sub1.var_names)
+
+sub3
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub4, resolution=0.5)
+sc.tl.umap(sub4)
+sc.pl.umap(sub4, color=&#39;louvain&#39;)
+
+sc.pl.umap(sub4, color=sub1.var_names)
+
+sub4
+
+sub4_orgIDdict={&#39;0&#39;:&#39;8&#39;, &#39;1&#39;:&#39;5&#39;, &#39;2&#39;:&#39;6&#39;, &#39;3&#39;:&#39;3&#39;, &#39;4&#39;:&#39;12&#39;, &#39;5&#39;:&#39;7&#39;, &#39;6&#39;:&#39;4&#39;, &#39;7&#39;:&#39;2&#39;, &#39;8&#39;:&#39;11&#39;, &#39;9&#39;:&#39;10&#39;, &#39;10&#39;:&#39;1&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub4.obs[&#39;orgID&#39;]=[sub4_orgIDdict.get(x) for x in list(sub4.obs[&#39;louvain&#39;])]
+
+
+sc.pl.umap(sub4, color=[&#39;orgID&#39;])
+sc.pl.umap(sub4, color=sub1.var_names)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub6, resolution=0.5)
+sc.tl.umap(sub6)
+sc.pl.umap(sub6, color=&#39;louvain&#39;)
+
+sc.pl.umap(sub6, color=sub1.var_names)
+
+sub6keeps=sub6[sub6.obs[&#39;louvain&#39;].isin([&#39;0&#39;,&#39;1&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;9&#39;,&#39;10&#39;,&#39;11&#39;,&#39;12&#39;])]
+
+sc.tl.louvain(sub6keeps, resolution=1)
+sc.pl.umap(sub6keeps, color=&#39;louvain&#39;)
+
+sub6keeps_orgIDdict={&#39;0&#39;:&#39;5&#39;, &#39;1&#39;:&#39;8&#39;, &#39;2&#39;:&#39;6&#39;, &#39;3&#39;:&#39;3&#39;, &#39;4&#39;:&#39;4&#39;, &#39;5&#39;:&#39;1&#39;, &#39;6&#39;:&#39;11&#39;, &#39;7&#39;:&#39;2&#39;, &#39;8&#39;:&#39;9&#39;, &#39;9&#39;:&#39;7&#39;, &#39;10&#39;:&#39;10&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub6keeps.obs[&#39;orgID&#39;]=[sub6keeps_orgIDdict.get(x) for x in list(sub6keeps.obs[&#39;louvain&#39;])]
+
+
+sc.pl.umap(sub6keeps, color=[&#39;orgID&#39;])
+sc.pl.umap(sub6keeps, color=sub1.var_names)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub8, resolution=0.7)
+sc.tl.umap(sub8)
+sc.pl.umap(sub8, color=&#39;louvain&#39;)
+
+sc.pl.umap(sub8, color=sub1.var_names)
+
+sub8
+
+sub8keeps=sub8[~sub8.obs[&#39;louvain&#39;].isin([&#39;2&#39;])]
+sc.tl.louvain(sub8keeps, resolution=1)
+sc.pl.umap(sub8keeps, color=&#39;louvain&#39;)
+
+
+sub8keeps_orgIDdict={&#39;0&#39;:&#39;8&#39;, &#39;1&#39;:&#39;5&#39;, &#39;2&#39;:&#39;6&#39;, &#39;3&#39;:&#39;3&#39;, &#39;4&#39;:&#39;4&#39;, &#39;5&#39;:&#39;1&#39;, &#39;6&#39;:&#39;11&#39;, &#39;7&#39;:&#39;9&#39;, &#39;8&#39;:&#39;2&#39;, &#39;9&#39;:&#39;7&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub8keeps.obs[&#39;orgID&#39;]=[sub8keeps_orgIDdict.get(x) for x in list(sub8keeps.obs[&#39;louvain&#39;])]
+
+
+sc.pl.umap(sub8keeps, color=[&#39;orgID&#39;])
+sc.pl.umap(sub8keeps, color=sub1.var_names)
+
+
+sub8rejects=sub8[sub8.obs[&#39;louvain&#39;].isin([&#39;2&#39;])]
+sc.tl.louvain(sub8rejects, resolution=0.2)
+sc.pl.umap(sub8rejects, color=[&#39;louvain&#39;, &#39;BC_36&#39;])
+
+sub8rejects=sub8rejects[sub8rejects.obs[&#39;louvain&#39;].isin([&#39;0&#39;])]
+sub8rejects_orgIDdict={&#39;0&#39;:&#39;12&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub8rejects.obs[&#39;orgID&#39;]=[sub8rejects_orgIDdict.get(x) for x in list(sub8rejects.obs[&#39;louvain&#39;])]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.louvain(sub9, resolution=1.2)
+sc.tl.umap(sub9)
+sc.pl.umap(sub9, color=&#39;louvain&#39;)
+
+sc.pl.umap(sub9, color=sub1.var_names)
+
+sub9
+
+sub9_orgIDdict={&#39;0&#39;:&#39;8&#39;, &#39;1&#39;:&#39;6&#39;, &#39;2&#39;:&#39;5&#39;, &#39;3&#39;:&#39;10&#39;, &#39;4&#39;:&#39;7&#39;, &#39;5&#39;:&#39;4&#39;, &#39;6&#39;:&#39;11&#39;, &#39;7&#39;:&#39;3&#39;, &#39;8&#39;:&#39;1&#39;, &#39;9&#39;:&#39;12&#39;, &#39;louvain&#39;:&#39;org&#39;}
+sub9.obs[&#39;orgID&#39;]=[sub9_orgIDdict.get(x) for x in list(sub9.obs[&#39;louvain&#39;])]
+
+
+sc.pl.umap(sub9, color=[&#39;orgID&#39;])
+sc.pl.umap(sub9, color=sub1.var_names)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>selected_cells=sub1keeps.obs[&#39;orgID&#39;]
+selected_cells = selected_cells.append(sub3.obs[&#39;orgID&#39;])
+selected_cells = selected_cells.append(sub4.obs[&#39;orgID&#39;])
+selected_cells = selected_cells.append(sub6keeps.obs[&#39;orgID&#39;])
+selected_cells = selected_cells.append(sub8keeps.obs[&#39;orgID&#39;])
+selected_cells = selected_cells.append(sub8rejects.obs[&#39;orgID&#39;])
+selected_cells = selected_cells.append(sub9.obs[&#39;orgID&#39;])
+
+
+#selected_cells
+sio.savemat(&#39;041519_jelly4stim_individs_tagCells_50k.mat&#39;, selected_cells)
+#adata.write(&#39;adata.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../kallistobusStarvClickTags/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../filterStarvCells_ClickTags/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['search.suggest', 'search.highlight'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

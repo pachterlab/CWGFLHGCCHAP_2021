@@ -1,0 +1,1113 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Walthrough for Whole Organisms Mutliplexed Data Analysis">
+      
+      
+      
+        <meta name="author" content="Tara Chari">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Explore Original Cell Atlas - WHAMSeqAnalysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#download-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-header-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WHAMSeqAnalysis
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Explore Original Cell Atlas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WHAMSeqAnalysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        ClickTag Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ClickTag Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          ClickTag Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClickTagCounts/" class="md-nav__link">
+        Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStarvClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStimClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        cDNA Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="cDNA Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          cDNA Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filterStarvCells_ClickTags/" class="md-nav__link">
+        Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistoBusRuns_StarvAndStim/" class="md-nav__link">
+        Quantification of cDNA Counts with kallisto-bustools (All Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Cell Atlas and Perturbation Response
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cell Atlas and Perturbation Response" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Cell Atlas and Perturbation Response
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClustering_Starvation/" class="md-nav__link">
+        Initial Cell Atlas Clustering from Cell Ranger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starvation_Analysis/" class="md-nav__link">
+        Cell Atlas Clustering and Analysis from kallisto-bustools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuronSubpop_Analysis/" class="md-nav__link">
+        Analysis of Neuron Subpopulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudotime_Analysis/" class="md-nav__link">
+        Pseudotime Analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StarvationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Stimulation Data Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stimulation Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Stimulation Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stimulation_Analysis/" class="md-nav__link">
+        Cell Atlas Concordance and Perturbation Response
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StimulationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Inter-Experimental Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Inter-Experimental Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Inter-Experimental Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allDistanceCalculations/" class="md-nav__link">
+        Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+      
+      <label class="md-nav__link" for="nav-7">
+        Explore Mutliplexed Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Explore Mutliplexed Datasets" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Explore Mutliplexed Datasets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAnnosAnalysis/" class="md-nav__link">
+        Generation Cell Atlas with MARIMBA Transcriptome
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAtlasSearchAndPlot/" class="md-nav__link">
+        Explore MARIMBA-Annotated Cell Atlas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Explore Original Cell Atlas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Explore Original Cell Atlas
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-make-data-for-heatmap-plottingexpression-visualizations" class="md-nav__link">
+    Read in &amp; make data for heatmap plotting/expression visualizations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-in-make-data-for-heatmap-plottingexpression-visualizations" class="md-nav__link">
+    Read in &amp; make data for heatmap plotting/expression visualizations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/edit/master/docs/notebooks/cellAtlasSearchAndPlot.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Explore Original Cell Atlas</h1>
+                
+                <p><a href="https://colab.research.google.com/github/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/SearchAndPlotInteractive/cellAtlasSearchAndPlot.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<h3 id="download-data"><strong>Download Data</strong><a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import requests
+from tqdm import tnrange, tqdm_notebook
+def download_file(doi,ext):
+    url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+    r = requests.get(url).json()
+    netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+    r = requests.get(netcdf_url,stream=True)
+    #Set file name
+    fname = doi.split(&#39;/&#39;)[-1]+ext
+    #Download file with progress bar
+    if r.status_code == 403:
+        print(&quot;File Unavailable&quot;)
+    if &#39;content-length&#39; not in r.headers:
+        print(&quot;Did not get file&quot;)
+    else:
+        with open(fname, &#39;wb&#39;) as f:
+            total_length = int(r.headers.get(&#39;content-length&#39;))
+            pbar = tnrange(int(total_length/1024), unit=&quot;B&quot;)
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    pbar.update()
+                    f.write(chunk)
+        return fname
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Kallisto bus clustered starvation data, h5ad (Trinity-processed data)
+download_file(&#39;10.22002/D1.1796&#39;,&#39;.gz&#39;)
+
+#Starvation h5ad data, all nonzero genes included, filtered for &#39;real cells&#39; from de-multiplexing (raw)
+download_file(&#39;10.22002/D1.1797&#39;,&#39;.gz&#39;)
+
+#Previously saved neuron subpopulations
+download_file(&#39;10.22002/D1.1804&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">479630</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">26058</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">1595</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1804.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!gunzip *.gz
+</code></pre></div>
+</td></tr></table>
+<h3 id="import-packages"><strong>Import Packages</strong><a class="headerlink" href="#import-packages" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!pip install --quiet anndata
+!pip install --quiet scanpy
+
+!pip install --quiet louvain
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">[K     |████████████████████████████████| 122kB 4.3MB/s </span>
+<span class="err">[K     |████████████████████████████████| 10.2MB 4.6MB/s </span>
+<span class="err">[K     |████████████████████████████████| 51kB 5.9MB/s </span>
+<span class="err">[K     |████████████████████████████████| 71kB 7.7MB/s </span>
+<span class="err">[?25h  Building wheel for sinfo (setup.py) ... [?25l[?25hdone</span>
+<span class="err">[K     |████████████████████████████████| 2.4MB 4.3MB/s </span>
+<span class="err">[K     |████████████████████████████████| 3.2MB 49.0MB/s </span>
+<span class="err">[K     |████████████████████████████████| 2.2MB 4.4MB/s </span>
+<span class="err">[?25h</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Install Packages
+import random
+import pandas as pd
+import anndata
+import scanpy as sc
+import numpy as np
+import scipy.sparse
+
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+sc.set_figure_params(dpi=125)
+
+import seaborn as sns
+sns.set(style=&quot;whitegrid&quot;)
+</code></pre></div>
+</td></tr></table>
+<h3 id="read-in-make-data-for-heatmap-plottingexpression-visualizations"><strong>Read in &amp; make data for heatmap plotting/expression visualizations</strong><a class="headerlink" href="#read-in-make-data-for-heatmap-plottingexpression-visualizations" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Read in h5ad file
+bus_fs = anndata.read(&quot;D1.1796&quot;)
+print(bus_fs)
+
+raw_fs = anndata.read(&#39;D1.1797&#39;)
+
+raw_fs = raw_fs[bus_fs.obs_names,]
+#Transfer info from embedded version
+raw_fs.obs[&#39;cellRanger_louvain&#39;] = pd.Categorical(bus_fs.obs[&#39;cellRanger_louvain&#39;])
+raw_fs.obs[&#39;fed&#39;] = pd.Categorical(bus_fs.obs[&#39;fed&#39;])
+raw_fs.obsm[&#39;X_tsne&#39;] = bus_fs.obsm[&#39;X_tsne&#39;]
+
+print(raw_fs)
+
+#Previously saved neurons
+neurons = anndata.read(&quot;D1.1804&quot;)
+
+print(neurons)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">Trying</span> <span class="n">to</span> <span class="n">set</span> <span class="n">attribute</span> <span class="err">`</span><span class="o">.</span><span class="n">obs</span><span class="err">`</span> <span class="n">of</span> <span class="n">view</span><span class="p">,</span> <span class="n">copying</span><span class="o">.</span>
+
+
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">13673</span> <span class="err">×</span> <span class="mi">8696</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;leiden&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span><span class="p">,</span> <span class="s1">&#39;fed&#39;</span><span class="p">,</span> <span class="s1">&#39;starved&#39;</span><span class="p">,</span> <span class="s1">&#39;fed_neighbor_score&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;annos&#39;</span><span class="p">,</span> <span class="s1">&#39;new_cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;annosSub&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;annosSub_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;annos_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain_sizes&#39;</span><span class="p">,</span> <span class="s2">&quot;dendrogram_[&#39;new_cellRanger_louvain&#39;]&quot;</span><span class="p">,</span> <span class="s1">&#39;dendrogram_new_cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;fed_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;fed_neighbor_score_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;leiden&#39;</span><span class="p">,</span> <span class="s1">&#39;leiden_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;new_cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;paga&#39;</span><span class="p">,</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;rank_genes_groups&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_nca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;connectivities&#39;</span><span class="p">,</span> <span class="s1">&#39;distances&#39;</span>
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">13673</span> <span class="err">×</span> <span class="mi">46716</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;fed&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_tsne&#39;</span>
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">1387</span> <span class="err">×</span> <span class="mi">2000</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;fed&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_neur&#39;</span><span class="p">,</span> <span class="s1">&#39;test_louvain&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;highly_variable&#39;</span><span class="p">,</span> <span class="s1">&#39;means&#39;</span><span class="p">,</span> <span class="s1">&#39;dispersions&#39;</span><span class="p">,</span> <span class="s1">&#39;dispersions_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;hvg&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_neur_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;rank_genes_groups&#39;</span><span class="p">,</span> <span class="s1">&#39;test_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;connectivities&#39;</span><span class="p">,</span> <span class="s1">&#39;distances&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Dendrogram for neurons (so heatmap organized by clustering)
+sc.tl.dendrogram(neurons,&#39;louvain_neur&#39;,linkage_method=&#39;ward&#39;)
+neurons.uns[&#39;dendrogram_louvain_neur&#39;] = neurons.uns[&quot;dendrogram_[&#39;louvain_neur&#39;]&quot;]
+sc.pl.dendrogram(neurons,&#39;louvain_neur&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_10_0.png" /></p>
+<div class="codehilite"><pre><span></span><code><span class="err">&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f35b6d4f1d0&gt;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Make neurons adata with all nonzero expression genes (not just highly variable ones)
+neurons_raw = raw_fs[raw_fs.obs[&#39;cellRanger_louvain&#39;].isin([31,26,6,9])]
+
+sc.pp.filter_cells(neurons_raw, min_counts=0)
+sc.pp.filter_genes(neurons_raw, min_counts=0)
+
+sc.pp.normalize_per_cell(neurons_raw, counts_per_cell_after=1e4)
+
+sc.pp.log1p(neurons_raw)
+
+#Transfer necessary labels to adata object
+neurons_raw.obs[&#39;louvain_neur&#39;] = neurons.obs[&#39;louvain_neur&#39;]
+neurons_raw.obsm[&#39;X_tsne&#39;] = neurons.obsm[&#39;X_tsne&#39;]
+neurons_raw.obsm[&#39;X_umap&#39;] = neurons.obsm[&#39;X_umap&#39;]
+
+neurons_raw.uns[&#39;dendrogram_louvain_neur&#39;] = neurons.uns[&#39;dendrogram_louvain_neur&#39;]
+neurons_raw.uns[&#39;louvain_neur_colors&#39;] = neurons.uns[&#39;louvain_neur_colors&#39;]
+
+neurons_raw
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">Trying</span> <span class="n">to</span> <span class="n">set</span> <span class="n">attribute</span> <span class="err">`</span><span class="o">.</span><span class="n">obs</span><span class="err">`</span> <span class="n">of</span> <span class="n">view</span><span class="p">,</span> <span class="n">copying</span><span class="o">.</span>
+
+
+
+
+
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">1387</span> <span class="err">×</span> <span class="mi">46716</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;fed&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_neur&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;log1p&#39;</span><span class="p">,</span> <span class="s1">&#39;dendrogram_louvain_neur&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_neur_colors&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+</code></pre></div>
+
+<p>Set list(s) of genes to plot</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Set list of genes to plot
+genes = [&#39;XLOC_000520&#39;,&#39;XLOC_001911&#39;,&#39;XLOC_002105&#39;,&#39;XLOC_002272&#39;,&#39;XLOC_004165&#39;,&#39;XLOC_005609&#39;,&#39;XLOC_006072&#39;,&#39;XLOC_006965&#39;,
+&#39;XLOC_007437&#39;,&#39;XLOC_008632&#39;,&#39;XLOC_008858&#39;,&#39;XLOC_009978&#39;,&#39;XLOC_010708&#39;,&#39;XLOC_011101&#39;,&#39;XLOC_015554&#39;,&#39;XLOC_017845&#39;,
+&#39;XLOC_019434&#39;,&#39;XLOC_021506&#39;,&#39;XLOC_029205&#39;,&#39;XLOC_029929&#39;,&#39;XLOC_029934&#39;,&#39;XLOC_030379&#39;,&#39;XLOC_031872&#39;,&#39;XLOC_033751&#39;,
+&#39;XLOC_034427&#39;,&#39;XLOC_036006&#39;,&#39;XLOC_038183&#39;,&#39;XLOC_038345&#39;,&#39;XLOC_042133&#39;,&#39;XLOC_042542&#39;,&#39;XLOC_030971&#39; , &#39;XLOC_004785&#39;,&#39;XLOC_033801&#39;,&#39;XLOC_007915&#39;]
+
+#Filter for gene names in annotation
+inRaw = [i for i in genes if i in list(neurons_raw.var_names)]
+notInRaw = [i for i in genes if i not in list(neurons_raw.var_names)]
+print(&#39;Genes not in annotation: &#39;,notInRaw)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Genes not in annotation:  []</span>
+</code></pre></div>
+
+<p>Plot gene expression across NEURON SUBPOPULATIONS</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Plot heatmap for genes in NEURON SUBPOPULATIONS
+toPlot = neurons_raw[:,inRaw]
+sc.pl.heatmap(toPlot, inRaw, groupby=&#39;louvain_neur&#39;, dendrogram=True,show_gene_labels=True,
+              cmap=&#39;PuBuGn&#39;,standard_scale=&#39;var&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_15_0.png" /></p>
+<p>Plot gene expression across CELL ATLAS</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Plot gene expression in CELL ATLAS
+
+raw_fs.obs[&#39;new_cellRanger_louvain&#39;] = bus_fs.obs[&#39;new_cellRanger_louvain&#39;]
+raw_fs.uns[&quot;dendrogram_new_cellRanger_louvain&quot;] = bus_fs.uns[&quot;dendrogram_new_cellRanger_louvain&quot;]
+raw_fs.uns[&#39;new_cellRanger_louvain_colors&#39;] = bus_fs.uns[&#39;new_cellRanger_louvain_colors&#39;]
+
+raw_fs.obsm[&#39;X_umap&#39;] = bus_fs.obsm[&#39;X_umap&#39;]
+
+#Log values in adata
+toPlot = raw_fs.copy()
+sc.pp.log1p(toPlot)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Plot gene expression on heatmap across cell types
+sc.pl.heatmap(toPlot, inRaw, groupby=&#39;new_cellRanger_louvain&#39;,dendrogram=True, show_gene_labels=True,swap_axes=True,figsize = (50,10),
+              cmap=&#39;PuBuGn&#39;,standard_scale=&#39;var&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_18_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Plot gene expression as violin plots
+sc.pl.violin(toPlot, keys=inRaw, groupby=&#39;fed&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_19_0.png" /></p>
+<p>Plot genes on Neural UMAP (2D Embedding) (Neural Subpopulations)</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Neuron subpopulations
+sc.pl.umap(neurons_raw,color=inRaw)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_21_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#See neuron subpopulations
+sc.pl.umap(neurons_raw,color=[&#39;louvain_neur&#39;])
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_22_0.png" /></p>
+<p>Plot genes on Cell Atlas UMAP (2D Embedding)</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Cell Atlas
+sc.pl.umap(toPlot,color=inRaw,s=40,save=&#39;umaps.pdf&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">WARNING</span><span class="o">:</span> <span class="n">saving</span> <span class="n">figure</span> <span class="n">to</span> <span class="n">file</span> <span class="n">figures</span><span class="o">/</span><span class="n">umapumaps</span><span class="o">.</span><span class="na">pdf</span>
+</code></pre></div>
+
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_24_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#See Cell Atlas populations
+raw_fs.obs[&#39;annosSub&#39;] = bus_fs.obs[&#39;annosSub&#39;]
+sc.pl.umap(raw_fs,color=[&#39;annosSub&#39;])
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../cellAtlasSearchAndPlot_files/cellAtlasSearchAndPlot_25_0.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../MARIMBAAtlasSearchAndPlot/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Explore MARIMBA-Annotated Cell Atlas
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['search.suggest', 'search.highlight'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
