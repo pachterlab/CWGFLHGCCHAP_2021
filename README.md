@@ -4,7 +4,7 @@ Notebooks for reproducing all figures and analysis in the *Whole Animal Multiple
 ## Getting Started
 
 All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.
-Additionally, notebooks can be viewed by their url with [nbviewer](https://nbviewer.jupyter.org/) e.g. https://nbviewer.jupyter.org/github/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/CellAtlasAnalysis/starvation_Analysis.ipynb
+Additionally, notebooks can be viewed on this [site](https://tarachari3.github.io/whamSeqCode/).
 
 All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
