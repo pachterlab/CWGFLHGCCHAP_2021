@@ -1,0 +1,2418 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Walthrough for Whole Organisms Mutliplexed Data Analysis">
+      
+      
+      
+        <meta name="author" content="Tara Chari">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Cell Atlas Concordance and Perturbation Response - WHAMSeqAnalysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#download-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-header-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WHAMSeqAnalysis
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Cell Atlas Concordance and Perturbation Response
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WHAMSeqAnalysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        ClickTag Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ClickTag Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          ClickTag Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClickTagCounts/" class="md-nav__link">
+        Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStarvClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStimClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        cDNA Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="cDNA Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          cDNA Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filterStarvCells_ClickTags/" class="md-nav__link">
+        Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistoBusRuns_StarvAndStim/" class="md-nav__link">
+        Quantification of cDNA Counts with kallisto-bustools (All Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Cell Atlas and Perturbation Response
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cell Atlas and Perturbation Response" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Cell Atlas and Perturbation Response
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClustering_Starvation/" class="md-nav__link">
+        Initial Cell Atlas Clustering from Cell Ranger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starvation_Analysis/" class="md-nav__link">
+        Cell Atlas Clustering and Analysis from kallisto-bustools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuronSubpop_Analysis/" class="md-nav__link">
+        Analysis of Neuron Subpopulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudotime_Analysis/" class="md-nav__link">
+        Pseudotime Analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StarvationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      
+      <label class="md-nav__link" for="nav-5">
+        Stimulation Data Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stimulation Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Stimulation Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cell Atlas Concordance and Perturbation Response
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Cell Atlas Concordance and Perturbation Response
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-stim-data-was-clusteredfiltered" class="md-nav__link">
+    How Stim Data was Clustered/Filtered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-of-stimulation-experiment-with-previously-saved-data" class="md-nav__link">
+    Analysis of Stimulation Experiment with previously saved data
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis of Stimulation Experiment with previously saved data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-of-cluster-labelsanalysis-of-label-fit" class="md-nav__link">
+    Application of Cluster Labels/Analysis of Label Fit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighbor-score-plots" class="md-nav__link">
+    Neighbor Score Plots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#violin-plots-for-de-genes" class="md-nav__link">
+    Violin Plots for DE Genes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neuron-subpopulations" class="md-nav__link">
+    Neuron Subpopulations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StimulationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Inter-Experimental Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Inter-Experimental Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Inter-Experimental Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allDistanceCalculations/" class="md-nav__link">
+        Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Explore Mutliplexed Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Explore Mutliplexed Datasets" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Explore Mutliplexed Datasets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAnnosAnalysis/" class="md-nav__link">
+        Generation Cell Atlas with MARIMBA Transcriptome
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAtlasSearchAndPlot/" class="md-nav__link">
+        Explore MARIMBA-Annotated Cell Atlas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellAtlasSearchAndPlot/" class="md-nav__link">
+        Explore Original Cell Atlas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-stim-data-was-clusteredfiltered" class="md-nav__link">
+    How Stim Data was Clustered/Filtered
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-of-stimulation-experiment-with-previously-saved-data" class="md-nav__link">
+    Analysis of Stimulation Experiment with previously saved data
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis of Stimulation Experiment with previously saved data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-of-cluster-labelsanalysis-of-label-fit" class="md-nav__link">
+    Application of Cluster Labels/Analysis of Label Fit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighbor-score-plots" class="md-nav__link">
+    Neighbor Score Plots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#violin-plots-for-de-genes" class="md-nav__link">
+    Violin Plots for DE Genes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neuron-subpopulations" class="md-nav__link">
+    Neuron Subpopulations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/edit/master/docs/notebooks/stimulation_Analysis.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Cell Atlas Concordance and Perturbation Response</h1>
+                
+                <p><a href="https://colab.research.google.com/github/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/StimulationAnalysis/stimulation_Analysis.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!date
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Wed Jun 24 23:17:52 UTC 2020</span>
+</code></pre></div>
+
+<h3 id="download-data"><strong>Download Data</strong><a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import requests
+from tqdm import tnrange, tqdm_notebook
+def download_file(doi,ext):
+    url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+    r = requests.get(url).json()
+    netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+    r = requests.get(netcdf_url,stream=True)
+    #Set file name
+    fname = doi.split(&#39;/&#39;)[-1]+ext
+    #Download file with progress bar
+    if r.status_code == 403:
+        print(&quot;File Unavailable&quot;)
+    if &#39;content-length&#39; not in r.headers:
+        print(&quot;Did not get file&quot;)
+    else:
+        with open(fname, &#39;wb&#39;) as f:
+            total_length = int(r.headers.get(&#39;content-length&#39;))
+            pbar = tnrange(int(total_length/1024), unit=&quot;B&quot;)
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    pbar.update()
+                    f.write(chunk)
+        return fname
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Import raw, unclustered stimulation data
+download_file(&#39;10.22002/D1.1814&#39;,&#39;.gz&#39;)
+
+#Import cell barcodes --&gt; individual ID matrix from ClickTag filtering
+download_file(&#39;10.22002/D1.1817&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">78502</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">183</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1817.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Import previously saved, clustered, &amp; filtered stimulation data 
+download_file(&#39;10.22002/D1.1821&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">772581</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1821.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Import merged data with knn clusters
+download_file(&#39;10.22002/D1.1823&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">257856</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1823.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Gene Markers to plot (for cell atlas) --&gt; Fig 2 heatmap
+download_file(&#39;10.22002/D1.1809&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1809.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Kallisto bus clustered starvation data, h5ad
+download_file(&#39;10.22002/D1.1796&#39;,&#39;.gz&#39;)
+
+#Neurons from fed/starved
+download_file(&#39;10.22002/D1.1804&#39;,&#39;.gz&#39;)
+
+#Saved DeSeq2 genes for stimulation perturbations
+download_file(&#39;10.22002/D1.1818&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">479630</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">1595</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">321</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1818.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Human ortholog annotations
+download_file(&#39;10.22002/D1.1819&#39;,&#39;.gz&#39;)
+
+#Panther annotations
+download_file(&#39;10.22002/D1.1820&#39;,&#39;.gz&#39;)
+
+#GO Terms
+download_file(&#39;10.22002/D1.1822&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">528</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">515</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">227</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1822.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!gunzip *.gz
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!pip install --quiet anndata
+!pip install --quiet scanpy
+!pip install --quiet louvain
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">[K     |████████████████████████████████| 122kB 7.9MB/s </span>
+<span class="err">[K     |████████████████████████████████| 10.2MB 6.6MB/s </span>
+<span class="err">[K     |████████████████████████████████| 71kB 10.0MB/s </span>
+<span class="err">[K     |████████████████████████████████| 51kB 8.0MB/s </span>
+<span class="err">[?25h  Building wheel for sinfo (setup.py) ... [?25l[?25hdone</span>
+<span class="err">[K     |████████████████████████████████| 2.2MB 9.2MB/s </span>
+<span class="err">[K     |████████████████████████████████| 3.2MB 55.9MB/s </span>
+<span class="err">[?25h</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!pip3 install --quiet rpy2
+</code></pre></div>
+</td></tr></table>
+<h3 id="import-packages"><strong>Import Packages</strong><a class="headerlink" href="#import-packages" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import scanpy as sc
+import anndata
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+import scipy.sparse
+import scipy.io as sio
+import seaborn as sns
+import random
+
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
+
+from sklearn.neighbors import (KNeighborsClassifier,NeighborhoodComponentsAnalysis)
+from sklearn.pipeline import Pipeline
+from sklearn.manifold import TSNE
+
+sc.set_figure_params(dpi=125)
+%load_ext rpy2.ipython
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Read in annotations
+from io import StringIO
+
+hg_ortho_df = pd.read_csv(StringIO(&#39;&#39;.join(l.replace(&#39;|&#39;, &#39;\t&#39;) for l in open(&#39;D1.1819&#39;))),
+            sep=&quot;\t&quot;,header=None,skiprows=[0,1,2,3])
+
+hg_ortho_df[[&#39;XLOC&#39;,&#39;TCONS&#39;]] = hg_ortho_df[13].str.split(expand=True) 
+hg_ortho_df[[&#39;Gene&#39;,&#39;gi&#39;]] = hg_ortho_df[3].str.split(expand=True) 
+hg_ortho_df[&#39;Description&#39;]= hg_ortho_df[11]
+
+
+panther_df = pd.read_csv(&#39;D1.1820&#39;,
+            sep=&quot;\t&quot;,header=None) #skiprows=[0,1,2,3]
+
+
+
+goTerm_df = pd.read_csv(&#39;D1.1822&#39;,
+            sep=&quot; &quot;,header=None) #skiprows=[0,1,2,3]
+</code></pre></div>
+</td></tr></table>
+<h3 id="how-stim-data-was-clusteredfiltered"><strong>How Stim Data was Clustered/Filtered</strong><a class="headerlink" href="#how-stim-data-was-clusteredfiltered" title="Permanent link">&para;</a></h3>
+<p>Clustering kallisto quantification output and applying 36 cell type labels</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Raw, unclustered h5ad
+bus_stim = anndata.read(&#39;D1.1814&#39;)
+sc.pp.filter_cells(bus_stim, min_counts=1)
+sc.pp.filter_genes(bus_stim, min_counts=1)
+bus_stim.obs[&#39;n_countslog&#39;]=np.log10(bus_stim.obs[&#39;n_counts&#39;])
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Median Genes/cell
+nonZero = bus_stim.X.todense() != 0.0
+nonZeroCounts = np.sum(nonZero,axis=1)
+nonZeroCounts.shape
+print(&#39;Median genes/cell:&#39; + str(np.median(list(nonZeroCounts))))
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Median genes/cell:1303.0</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Median UMIs/cell
+print(&#39;Median UMIs/cell:&#39; + str(np.median(bus_stim.obs[&#39;n_counts&#39;])))
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Median UMIs/cell:4297.0</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Normalize
+sc.pp.normalize_per_cell(bus_stim, counts_per_cell_after=1e4) #or 1e5
+bus_stim.raw = sc.pp.log1p(bus_stim, copy=True)
+filter_result = sc.pp.filter_genes_dispersion(
+    bus_stim.X, min_mean=0.0125, max_mean=4.5, min_disp=0.2)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim = bus_stim[:, filter_result.gene_subset]
+
+print(bus_stim)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">View</span> <span class="n">of</span> <span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">23057</span> <span class="err">×</span> <span class="mi">10260</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Clustering and visualization
+
+sc.pp.scale(bus_stim, max_value=10)
+sc.tl.pca(bus_stim, n_comps=60)
+#sc.tl.tsne(bus_stim, n_pcs=30)
+
+sc.pp.neighbors(bus_stim,n_neighbors=50, n_pcs=30) #n_neighbors=5, n_pcs=15
+#sc.tl.leiden(bus_stim, resolution=0.8)
+sc.tl.louvain(bus_stim, resolution=0.7)
+sc.tl.umap(bus_stim)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pl.umap(bus_stim, color=[&#39;louvain&#39;,&#39;XLOC_012650&#39;,&#39;XLOC_030971&#39;,&#39;n_countslog&#39;],legend_loc=&#39;on data&#39;,color_map=&#39;viridis&#39;) #leiden
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_23_0.png" /></p>
+<p>Filter for cells selected by ClickTag pre-processing and add organism condition information</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Assign labels to cells (condition and organism ID/#)
+!mv D1.1817 jelly4stim_individs_tagCells_50k.mat
+barcodes_list = sio.loadmat(&#39;jelly4stim_individs_tagCells_50k.mat&#39;)
+barcodes_list.pop(&#39;__header__&#39;, None)
+barcodes_list.pop(&#39;__version__&#39;, None)
+barcodes_list.pop(&#39;__globals__&#39;, None)
+
+# Add all cell barcodes for each individual
+barcodes = []
+for b in barcodes_list:
+    if barcodes_list[b] != &quot;None&quot;:
+        barcodes.append(b)
+
+print(len(barcodes))
+
+barcodes = [s.replace(&#39;-1&#39;, &#39;-3&#39;) for s in barcodes]
+barcodes = [s.replace(&#39;-2&#39;, &#39;-1&#39;) for s in barcodes]
+barcodes = [s.replace(&#39;-3&#39;, &#39;-2&#39;) for s in barcodes]
+
+
+
+#Flip -1 -2 labels (from Miseq/Hiseq lane ordering)
+def convertCode(b_list):
+    b_list = [s.replace(&#39;-1&#39;, &#39;-3&#39;) for s in b_list]
+    b_list = [s.replace(&#39;-2&#39;, &#39;-1&#39;) for s in b_list]
+    b_list = [s.replace(&#39;-3&#39;, &#39;-2&#39;) for s in b_list]
+    return b_list
+
+def convertCode_str(b):
+    b = b.replace(&#39;-1&#39;, &#39;-3&#39;)
+    b = b.replace(&#39;-2&#39;, &#39;-1&#39;)
+    b = b.replace(&#39;-3&#39;, &#39;-2&#39;)
+    return b
+
+fixed_bars = {}
+for b in barcodes:
+    fixed_bars[b] = barcodes_list[convertCode_str(b)][0]
+
+#Add condition labels to individuals   
+ids = []
+for name in bus_stim.obs_names.tolist():
+    for barcode, individ in fixed_bars.items():    
+        if (name in barcode):
+            ids += [int(individ)]
+
+condition = [&#39;SW&#39;,&#39;SW&#39;,&#39;SW&#39;,&#39;SW&#39;,&#39;DI&#39;,&#39;DI&#39;,&#39;DI&#39;,&#39;DI&#39;,&#39;KCl&#39;,&#39;KCl&#39;,&#39;KCl&#39;,&#39;KCl&#39;]
+
+#Add ID numbers to individuals  
+labels = []
+for name in bus_stim.obs_names.tolist():
+    for barcode, individ in fixed_bars.items():    
+        if name in barcode:
+            labels += [condition[int(individ)-1]]
+
+bus_stim.obs[&#39;condition&#39;] = pd.Categorical(labels)
+bus_stim.obs[&#39;orgID&#39;] = pd.Categorical(ids)
+bus_stim
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="mi">23058</span>
+
+
+
+
+
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">23057</span> <span class="err">×</span> <span class="mi">10260</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain_colors&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;distances&#39;</span><span class="p">,</span> <span class="s1">&#39;connectivities&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Remove low count region, &#39;0&#39;
+bus_combo_noZero = bus_stim[~bus_stim.obs[&#39;louvain&#39;].isin([&#39;0&#39;])] #leiden
+
+bus_combo_noZero.write(&#39;bus_stim.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+<h3 id="analysis-of-stimulation-experiment-with-previously-saved-data"><strong>Analysis of Stimulation Experiment with previously saved data</strong><a class="headerlink" href="#analysis-of-stimulation-experiment-with-previously-saved-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Saved Filtered and clustered h5ad
+
+#Stimulation data
+bus_stim_clus = anndata.read(&#39;D1.1821&#39;)
+
+print(bus_stim_clus)
+
+#Merged experimental data
+overlap_combo = anndata.read(&#39;D1.1823&#39;)
+print(overlap_combo )
+
+#Raw, unclustered h5ad
+bus_stim = anndata.read(&#39;D1.1814&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">18921</span> <span class="err">×</span> <span class="mi">10260</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain_sizes&#39;</span><span class="p">,</span> <span class="s1">&#39;condition_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;paga&#39;</span><span class="p">,</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;connectivities&#39;</span><span class="p">,</span> <span class="s1">&#39;distances&#39;</span>
+<span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">32594</span> <span class="err">×</span> <span class="mi">6756</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;leiden&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span><span class="p">,</span> <span class="s1">&#39;fed&#39;</span><span class="p">,</span> <span class="s1">&#39;starved&#39;</span><span class="p">,</span> <span class="s1">&#39;fed_neighbor_score&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;annos&#39;</span><span class="p">,</span> <span class="s1">&#39;new_cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;annosSub&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;cell_origin&#39;</span><span class="p">,</span> <span class="s1">&#39;knn_clus&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts-0&#39;</span><span class="p">,</span> <span class="s1">&#39;mean-0&#39;</span><span class="p">,</span> <span class="s1">&#39;std-0&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts-1&#39;</span><span class="p">,</span> <span class="s1">&#39;mean-1&#39;</span><span class="p">,</span> <span class="s1">&#39;std-1&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;pca&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_nca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Starvation data
+bus_fs_clus = anndata.read(&#39;D1.1796&#39;)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pp.filter_cells(bus_stim, min_counts=1)
+sc.pp.filter_genes(bus_stim, min_counts=1)
+np.sum(bus_stim[list(bus_stim_clus.obs_names),:].X) #Number of unique reads
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">170722140.0</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Markers for cell atlas heatmap (Fig 2b)
+markers = pd.read_csv(&#39;D1.1809&#39;)
+markers.head()
+</code></pre></div>
+</td></tr></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>clus</th>
+      <th>markerGene</th>
+      <th>annot</th>
+      <th>orthoGene</th>
+      <th>orthoDescr</th>
+      <th>pantherID</th>
+      <th>pantherDescr</th>
+      <th>source</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>Unnamed: 10</th>
+      <th>Unnamed: 11</th>
+      <th>Unnamed: 12</th>
+      <th>Unnamed: 13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>XLOC_010813</td>
+      <td>DDX39B</td>
+      <td>DDX39B</td>
+      <td>spliceosome RNA helicase DDX39B [Homo sapiens]</td>
+      <td>['PTHR24031:SF521']</td>
+      <td>['SPLICEOSOME RNA HELICASE DDX39B']</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>XLOC_008430</td>
+      <td>PA2G4</td>
+      <td>PA2G4</td>
+      <td>proliferation-associated protein 2G4 [Homo sa...</td>
+      <td>['PTHR10804:SF125']</td>
+      <td>['PROLIFERATION-ASSOCIATED 2G4 ,B']</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>XLOC_016073</td>
+      <td>ZP3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>['PTHR11576']</td>
+      <td>['ZONA PELLUCIDA SPERM-BINDING PROTEIN 3']</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>XLOC_006164</td>
+      <td>LOT6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>['PTHR30543:SF12']</td>
+      <td>['NAD(P)H-DEPENDENT FMN REDUCTASE LOT6']</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.0</td>
+      <td>XLOC_013735</td>
+      <td>INXA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>['PTHR11893:SF41']</td>
+      <td>['INNEXIN INX7']</td>
+      <td></td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus.obs[&#39;cellRanger_louvain&#39;] = pd.Categorical(overlap_combo[overlap_combo.obs[&#39;cell_origin&#39;] == &#39;Stim&#39;].obs[&#39;knn_clus&#39;])
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Exact values for generating UMAP/PAGA embedding for stimulation data
+#sc.pp.neighbors(bus_stim_clus,n_neighbors=30, n_pcs=30) #use_rep=&#39;X_nca&#39;
+#sc.tl.paga(bus_stim_clus, groups=&#39;cellRanger_louvain&#39;)
+sc.pl.paga(bus_stim_clus, color=[&#39;cellRanger_louvain&#39;])
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_33_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Exact inputs for umap embedding
+#sc.tl.umap(bus_stim_clus,random_state=42,init_pos=&#39;paga&#39;,spread=2.0)
+sc.pl.umap(bus_stim_clus, color=[&#39;cellRanger_louvain&#39;,&#39;condition&#39;],color_map=&#39;viridis&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_34_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pl.umap(bus_stim_clus, color=[&#39;cellRanger_louvain&#39;],color_map=&#39;viridis&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_35_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Saved adata usedd for this analysis
+#bus_stim_clus.write(&#39;bus_stim.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+<h4 id="application-of-cluster-labelsanalysis-of-label-fit"><strong>Application of Cluster Labels/Analysis of Label Fit</strong><a class="headerlink" href="#application-of-cluster-labelsanalysis-of-label-fit" title="Permanent link">&para;</a></h4>
+<p>Here we apply the 36 cell type labels and look at the overlap in marker genes for these clusters versus markers from the starvation experiment</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Names for 36 subclusters
+def annotateLouvainSub(bus_fs_clus):
+  cluster_types = []
+
+  for i in bus_fs_clus.obs_names:
+
+    if bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [12]:
+      cluster_types += [&#39;Nematocyte Precursors&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [17]:
+      cluster_types += [&#39;Maturing/mature Nematocytes&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [11]:
+      cluster_types += [&#39;Early Nematocytes&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [23]:
+      cluster_types += [&#39;Late Nematocytes&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [2]:
+      cluster_types += [&#39;Medium Oocytes&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [13]:
+      cluster_types += [&#39;Small Oocytes&#39;]
+
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [7]:
+      cluster_types += [&#39;GastroDigestive-B&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [15]:
+      cluster_types += [&#39;GastroDigestive-D&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [3]:
+      cluster_types += [&#39;GastroDigestive-A&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [14]:
+      cluster_types += [&#39;GastroDigestive-C&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [19]:
+      cluster_types += [&#39;GastroDigestive-E&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [24]:
+      cluster_types += [&#39;GastroDigestive-F&#39;]
+
+
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [5]:
+      cluster_types += [&#39;Mechanosensory Cells Early Stages&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [10]:
+      cluster_types += [&#39;Mechanosensory Cells-A&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [21]:
+      cluster_types += [&#39;Mechanosensory Cells-B&#39;]
+
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [0]:
+      cluster_types += [&#39;i-Cells&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [1]:
+      cluster_types += [&#39;Exumbrella Epidermis&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [4]:
+      cluster_types += [&#39;Manubrium Epidermis&#39;]
+
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [6]:
+      cluster_types += [&#39;Neural Cells Early Stages&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [9]:
+      cluster_types += [&#39;Neural Cells-A (incl. GLWa, MIH cells)&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [26]:
+      cluster_types += [&#39;Neural Cells-B (incl. RFamide cells)&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [31]:
+      cluster_types += [&#39;Neural Cells-C (incl. YFamide cells)&#39;]
+
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [8]:
+      cluster_types += [&#39;Striated Muscle of Subumbrella&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [16]:
+      cluster_types += [&#39;Tentacle Bulb Distal Gastroderm&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [18]:
+      cluster_types += [&#39;Radial Smooth Muscles&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [20]:
+      cluster_types += [&#39;Tentacle Epidermis&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [22]:
+      cluster_types += [&#39;Gland Cells-A&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [25]:
+      cluster_types += [&#39;Gland Cells-C&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [27]:
+      cluster_types += [&#39;Gland Cells-B&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [28]:
+      cluster_types += [&#39;Tentacle GFP Cells&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [29]:
+      cluster_types += [&#39;Gonad Epidermis&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [30]:
+      cluster_types += [&#39;Striated Muscle of Velum&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [32]:
+      cluster_types += [&#39;Gland Cells-D&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [33]:
+      cluster_types += [&#39;Endodermal Plate&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [34]:
+      cluster_types += [&#39;Gland Cells-E&#39;]
+    elif bus_fs_clus[i,:].obs[&#39;cellRanger_louvain&#39;][0] in [35]:
+      cluster_types += [&#39;Very Early Oocytes&#39;]
+
+  bus_fs_clus.obs[&#39;annosSub&#39;] = pd.Categorical(cluster_types)
+
+annotateLouvainSub(bus_stim_clus)
+bus_stim_clus
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">18921</span> <span class="err">×</span> <span class="mi">10260</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;annosSub&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain_sizes&#39;</span><span class="p">,</span> <span class="s1">&#39;condition_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;paga&#39;</span><span class="p">,</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;connectivities&#39;</span><span class="p">,</span> <span class="s1">&#39;distances&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pl.umap(bus_stim_clus,color=&#39;annosSub&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_39_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>colors = bus_stim_clus.uns[&#39;annosSub_colors&#39;]#bus_fs_clus.uns[&#39;annosSub_colors&#39;]
+colors
+fig, ax = plt.subplots(figsize=(10,10))
+
+c = np.unique(bus_stim_clus.obs[&quot;cellRanger_louvain&quot;].values)
+cmap = [i+&#39;70&#39; for i in colors]#plt.cm.get_cmap(&quot;tab20&quot;)
+
+
+names = c
+
+for idx, (cluster, name) in enumerate(zip(c, names)):
+    XX = bus_stim_clus[bus_stim_clus.obs.cellRanger_louvain.isin([cluster]),:].obsm[&quot;X_umap&quot;]
+    text = list(bus_stim_clus[bus_stim_clus.obs.cellRanger_louvain.isin([cluster]),:].obs.annosSub)[0]
+    x = XX[:,0]
+    y = XX[:,1]
+    ax.scatter(x, y, color = cmap[idx], label=str(cluster)+&#39;: &#39;+text,s=5)
+    ax.annotate(name, 
+             (np.mean(x), np.mean(y)),
+             horizontalalignment=&#39;center&#39;,
+             verticalalignment=&#39;bottom&#39;,
+             size=10, weight=&#39;bold&#39;,
+             color=&quot;black&quot;,
+               backgroundcolor=cmap[idx]) 
+
+
+ax.legend(loc=&#39;center left&#39;,bbox_to_anchor=(1, 0.5),prop={&#39;size&#39;: 8},frameon=False)
+ax.set_axis_off()
+plt.savefig(&#39;36ClusAtlas_Stim.pdf&#39;) 
+plt.show()
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_40_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Subsample for clusters &gt; 100 in size
+#Subsample from full dataset, across each cluster
+def subSample(adata):
+  groups = np.unique(adata.obs[&#39;cellRanger_louvain&#39;])
+  subSample = 100
+  cellNames = np.array(adata.obs_names)
+
+  allCells = []
+  for i in groups:
+      #subSample =  clusSize[i] # Uncomment if not looking at similar scale cluster sizes
+
+      cells = np.array(list(adata.obs[&#39;cellRanger_louvain&#39;].isin([i])))
+      cellLocs = list(np.where(cells)[0])
+
+      if len(cellLocs) &gt; 100:
+      #Take all cells if &lt; subSample
+        choice = random.sample(cellLocs,subSample)
+      else:
+        choice = cellLocs
+
+      pos = list(choice)
+      #print(len(pos))
+
+      allCells += list(cellNames[pos])
+
+
+  sub = adata[allCells,:]
+  return sub
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># #Filtered list of top markers
+topMarkers = pd.read_csv(&#39;D1.1809&#39;,sep=&quot;,&quot;)
+#topMarkers.head()
+
+topMarkers = topMarkers[0:51]
+
+topGenes = []
+names = []
+var_groups = []
+var_labels = []
+ind = 0
+#n_genes = 2
+for i in np.unique(topMarkers.clus):
+  sub = topMarkers[topMarkers.clus == i]
+  #sub.sort_values(by=&#39;padj&#39;,ascending=True)
+
+  #noDups = [i for i in sub.markerGene if i not in topGenes] #Remove duplicate genes
+  topGenes += list(sub.markerGene)
+  names += list(sub.annot)
+
+  var_groups += [(ind,ind+len(list(sub.annot))-1)]
+  var_labels += [str(int(i))] #make i from clusNameDict[i]
+  ind += len(list(sub.annot))
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus.obs[&#39;cellRanger_louvain&#39;] = [str(i) for i in bus_stim_clus.obs[&#39;cellRanger_louvain&#39;]]
+bus_stim_clus.obs[&#39;cellRanger_louvain&#39;] = pd.Categorical(bus_stim_clus.obs[&#39;cellRanger_louvain&#39;])
+#Create dendrogram for subclusters
+sc.tl.dendrogram(bus_stim_clus,&#39;cellRanger_louvain&#39;,linkage_method=&#39;ward&#39;)
+bus_stim_clus.uns[&quot;dendrogram_cellRanger_louvain&quot;] = bus_stim_clus.uns[&quot;dendrogram_[&#39;cellRanger_louvain&#39;]&quot;]
+
+bus_stim_clusSub = subSample(bus_stim_clus)
+
+#Raw, unclustered h5ad
+bus_stim = anndata.read(&#39;D1.1814&#39;)
+sc.pp.filter_cells(bus_stim, min_counts=1)
+sc.pp.filter_genes(bus_stim, min_counts=1)
+
+bus_stim = bus_stim[bus_stim_clusSub.obs_names,:]
+bus_stim.obs[&#39;cellRanger_louvain&#39;] = bus_stim_clusSub.obs[&#39;cellRanger_louvain&#39;]
+bus_stim.uns[&#39;cellRanger_louvain_colors&#39;] = bus_stim_clus.uns[&#39;annosSub_colors&#39;]
+bus_stim.uns[&quot;dendrogram_cellRanger_louvain&quot;] = bus_stim_clusSub.uns[&quot;dendrogram_cellRanger_louvain&quot;]
+
+
+bus_stim = bus_stim[:,topGenes]
+bus_stim.var[&#39;names&#39;] = names
+
+sc.pp.log1p(bus_stim)
+
+sc.set_figure_params(scanpy=True, fontsize=30,dpi=150)
+sc.pl.heatmap(bus_stim,names,groupby=&#39;cellRanger_louvain&#39;,dendrogram=True,show_gene_labels=True,cmap=&#39;PuBuGn&#39;,use_raw = False,
+                var_group_positions=var_groups,var_group_labels=var_labels,figsize = (30,30),swap_axes=True,standard_scale=&#39;var&#39;,
+              gene_symbols=&#39;names&#39;,save=&#39;stimAtlas.pdf&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">Trying</span> <span class="n">to</span> <span class="n">set</span> <span class="n">attribute</span> <span class="err">`</span><span class="o">.</span><span class="n">obs</span><span class="err">`</span> <span class="n">of</span> <span class="n">view</span><span class="p">,</span> <span class="n">copying</span><span class="o">.</span>
+<span class="n">Trying</span> <span class="n">to</span> <span class="n">set</span> <span class="n">attribute</span> <span class="err">`</span><span class="o">.</span><span class="k">var</span><span class="err">`</span> <span class="n">of</span> <span class="n">view</span><span class="p">,</span> <span class="n">copying</span><span class="o">.</span>
+
+
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">saving</span> <span class="n">figure</span> <span class="n">to</span> <span class="n">file</span> <span class="n">figures</span><span class="o">/</span><span class="n">heatmapstimAtlas</span><span class="o">.</span><span class="n">pdf</span>
+</code></pre></div>
+
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_43_2.png" /></p>
+<p>Jaccard Marker Overlap Comparison</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>n=100
+bus_fs_clus.obs[&#39;cellRanger_louvain&#39;] = pd.Categorical(bus_fs_clus.obs[&#39;cellRanger_louvain&#39;])
+sc.tl.rank_genes_groups(bus_stim_clus,groupby=&#39;cellRanger_louvain&#39;,n_genes=n,method=&#39;wilcoxon&#39;)
+sc.tl.rank_genes_groups(bus_fs_clus,groupby=&#39;cellRanger_louvain&#39;,n_genes=n,method=&#39;wilcoxon&#39;)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Show pairwise overlap in top 100 names between all clusters, 36x36 grid
+#https://stackoverflow.com/questions/52408910/python-pairwise-intersection-of-multiple-lists-then-sum-up-all-duplicates
+
+clus = np.unique(bus_fs_clus.obs[&#39;cellRanger_louvain&#39;])
+
+busStim = [[]]*len(clus) #np array of top 100 genes for each of 36 clusters
+busFS = [[]]*len(clus)#np array of top 100 genes for each of 36 clusters
+
+for c in clus:
+  busStim[c] =  list(bus_stim_clus.uns[&#39;rank_genes_groups&#39;][&#39;names&#39;][str(c)])
+  busFS[c] = list(bus_fs_clus.uns[&#39;rank_genes_groups&#39;][&#39;names&#39;][str(c)])
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>from itertools import combinations_with_replacement
+
+#Changed to calculate Jaccard Index
+def intersect(i,j):
+  return len(set(busStim[i]).intersection(busFS[j]))/len(set(busStim[i]).union(busFS[j]))
+
+def pairwise(clus):        
+  # Initialise precomputed matrix (num of clusters, 36x36)
+  precomputed = np.zeros((len(clus),len(clus)), dtype=&#39;float&#39;)
+  # Initialise iterator over objects in X
+  iterator = combinations_with_replacement(range(0,len(clus)), 2)
+  # Perform the operation on each pair
+  for i,j in iterator:
+    precomputed[i,j] = intersect(i,j)          
+  # Make symmetric and return
+  return precomputed + precomputed.T - np.diag(np.diag(precomputed))
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pairCorrs = pairwise(clus)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>plt.figure(figsize=(7,7))
+plt.imshow(pairCorrs, cmap=&#39;viridis&#39;)
+plt.colorbar()
+plt.xlabel(&#39;Starvation Clusters&#39;)
+plt.ylabel(&#39;Stimulation Clusters&#39;)
+
+plt.xticks(np.arange(0, 36, 1),fontsize=5)
+plt.yticks(np.arange(0, 36, 1),fontsize=5)
+plt.grid(color=&#39;black&#39;,linewidth=0.3)
+plt.show()
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_49_0.png" /></p>
+<h4 id="neighbor-score-plots"><strong>Neighbor Score Plots</strong><a class="headerlink" href="#neighbor-score-plots" title="Permanent link">&para;</a></h4>
+<p>Look at the density neighbors for each cell from the different perturbation conditions</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Calculate number of neighbors (out of top 15) with same starvation condition
+#Input adata object and if score is for fed or starved (True or False)
+def neighborScores(adata,conditionBool):
+  sc.pp.neighbors(adata,n_neighbors=15)
+  neighborDists = adata.uns[&#39;neighbors&#39;][&#39;distances&#39;].todense()
+  counts = []
+
+  for i in range(0,len(adata.obs_names)):
+    cellNames = adata.obs_names
+
+    #get condition observation for this cell
+    cellObs = adata.obs[&#39;condition&#39;][cellNames[i]]
+
+    #get row for cell
+    nonZero = neighborDists[i,:]&gt;0
+    l = nonZero.tolist()[0]
+
+    cellRow = neighborDists[i,:]
+    cellRow = cellRow[:,l]
+
+
+    #get &#39;fed&#39; observations
+    obs = adata.obs[&#39;condition&#39;][l]
+
+    # count # in &#39;fed&#39; observations == cell obs
+    count = 0
+    #if cellObs == conditionBool:
+    for j in obs:
+      if j == conditionBool:
+        count += 1
+
+
+    counts += [count]
+
+  print(len(counts))
+
+  return counts
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus.obs[&#39;di_neighbor_score&#39;] = neighborScores(bus_stim_clus,&#39;DI&#39;)
+sc.pl.umap(bus_stim_clus,color=&#39;di_neighbor_score&#39;,color_map=&#39;plasma&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">18921</span>
+</code></pre></div>
+
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_52_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus.obs[&#39;sw_neighbor_score&#39;] = neighborScores(bus_stim_clus,&#39;SW&#39;)
+sc.pl.umap(bus_stim_clus,color=&#39;sw_neighbor_score&#39;,color_map=&#39;plasma&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">18921</span>
+</code></pre></div>
+
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_53_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus.obs[&#39;kcl_neighbor_score&#39;] = neighborScores(bus_stim_clus,&#39;KCl&#39;)
+sc.pl.umap(bus_stim_clus,color=&#39;kcl_neighbor_score&#39;,color_map=&#39;plasma&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">18921</span>
+</code></pre></div>
+
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_54_1.png" /></p>
+<h4 id="violin-plots-for-de-genes"><strong>Violin Plots for DE Genes</strong><a class="headerlink" href="#violin-plots-for-de-genes" title="Permanent link">&para;</a></h4>
+<p>Look at expression profiles for DE genes under the different perturbations</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>bus_stim_clus
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">18921</span> <span class="err">×</span> <span class="mi">10260</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_countslog&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;orgID&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;di_neighbor_score&#39;</span><span class="p">,</span> <span class="s1">&#39;sw_neighbor_score&#39;</span><span class="p">,</span> <span class="s1">&#39;kcl_neighbor_score&#39;</span>
+    <span class="k">var</span><span class="p">:</span> <span class="s1">&#39;n_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span>
+    <span class="n">uns</span><span class="p">:</span> <span class="s1">&#39;cellRanger_louvain_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;cellRanger_louvain_sizes&#39;</span><span class="p">,</span> <span class="s1">&#39;condition_colors&#39;</span><span class="p">,</span> <span class="s1">&#39;louvain&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbors&#39;</span><span class="p">,</span> <span class="s1">&#39;paga&#39;</span><span class="p">,</span> <span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="s1">&#39;umap&#39;</span>
+    <span class="n">obsm</span><span class="p">:</span> <span class="s1">&#39;X_pca&#39;</span><span class="p">,</span> <span class="s1">&#39;X_tsne&#39;</span><span class="p">,</span> <span class="s1">&#39;X_umap&#39;</span>
+    <span class="n">varm</span><span class="p">:</span> <span class="s1">&#39;PCs&#39;</span>
+    <span class="n">obsp</span><span class="p">:</span> <span class="s1">&#39;connectivities&#39;</span><span class="p">,</span> <span class="s1">&#39;distances&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>clus5 = bus_stim_clus[bus_stim_clus.obs[&#39;cellRanger_louvain&#39;].isin([5])]
+
+#Piwi-like, DNA-directed RNA polymerase, Cilia/Flagella Associated Protein **
+sc.pl.violin(clus5,keys=[&#39;XLOC_007915&#39;,&#39;XLOC_005790&#39;,&#39;XLOC_004521&#39;], groupby=&#39;condition&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_57_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>clus2 = bus_stim_clus[bus_stim_clus.obs[&#39;cellRanger_louvain&#39;].isin([2])]
+
+#Mitosis-related Cyclin, Tubulin beta-like, Collagen alpha-like 
+sc.pl.violin(clus2,keys=[&#39;XLOC_045075&#39;,&#39;XLOC_006366&#39;,&#39;XLOC_029934&#39;], groupby=&#39;condition&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_58_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>clus7 = bus_stim_clus[bus_stim_clus.obs[&#39;cellRanger_louvain&#39;].isin([7])]
+sc.pl.violin(clus7,keys=[&#39;XLOC_006729&#39;,&#39;XLOC_000601&#39;,&#39;XLOC_006558&#39;], groupby=&#39;condition&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_59_0.png" /></p>
+<h4 id="neuron-subpopulations"><strong>Neuron Subpopulations</strong><a class="headerlink" href="#neuron-subpopulations" title="Permanent link">&para;</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>fs_neuron = anndata.read(&#39;D1.1804&#39;)
+</code></pre></div>
+</td></tr></table>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>XLOC</th>
+      <th>Annotation</th>
+      <th>Class</th>
+      <th>Cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>XLOC_030971</td>
+      <td>ELAV</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>XLOC_001566</td>
+      <td>Synaptotagmin</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>XLOC_030920</td>
+      <td>Neurogenin</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>XLOC_040584</td>
+      <td>GRWGamide</td>
+      <td>Peptide</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>XLOC_019434</td>
+      <td>Rfamide</td>
+      <td>Peptide</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Raw, unclustered h5ad
+bus_stim = anndata.read(&#39;D1.1814&#39;)
+bus_stim = bus_stim[bus_stim_clus.obs_names,]
+#Transfer info from embedded version
+bus_stim.obs[&#39;cellRanger_louvain&#39;] = pd.Categorical(bus_stim_clus.obs[&#39;cellRanger_louvain&#39;])
+bus_stim.obs[&#39;condition&#39;] = pd.Categorical(bus_stim_clus.obs[&#39;condition&#39;])
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Trying to set attribute `.obs` of view, copying.</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Neurons, start from raw counts + unfiltered genes
+neurons = bus_stim[bus_stim.obs[&#39;cellRanger_louvain&#39;].isin([31,26,6,9])]
+sc.pp.filter_cells(neurons, min_counts=0)
+sc.pp.filter_genes(neurons, min_counts=0)
+
+sc.pp.normalize_per_cell(neurons, counts_per_cell_after=1e4)
+
+neurons_copy = neurons.copy()
+sc.pp.log1p(neurons)
+neurons.raw = sc.pp.log1p(neurons_copy, copy=True)
+
+# sc.pp.scale(raw_overlap_combo, max_value=10)
+sc.pp.highly_variable_genes(neurons,n_top_genes=2000,n_bins=50)
+
+neurons = neurons[:,neurons.var[&#39;highly_variable&#39;]]
+
+sc.pp.scale(neurons, max_value=10)
+
+sc.tl.pca(neurons, n_comps=60)
+sc.pl.pca_variance_ratio(neurons, log=True)
+
+#applyNCAEmbed(neurons,neurons.obs[&#39;knn_clus&#39;])
+
+sc.pp.neighbors(neurons,n_neighbors=15, n_pcs=15) #n_neighbors=5, n_pcs=15,use_rep=&#39;X_nca&#39;
+sc.tl.louvain(neurons,resolution=1,key_added=&#39;louvain_neur&#39;,random_state=42)#Clustering algorithm,resolution=0.5
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Trying to set attribute `.obs` of view, copying.</span>
+</code></pre></div>
+
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_63_1.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#sc.tl.louvain(neurons,resolution=2.5,key_added=&#39;louvain_neur&#39;,random_state=42)
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.tl.umap(neurons,random_state=42,spread=2.5, min_dist=1)
+
+neurons.obs[&#39;cellAtlasClusters&#39;] = pd.Categorical(neurons.obs[&#39;cellRanger_louvain&#39;] )
+sc.pl.umap(neurons, color=[&#39;louvain_neur&#39;,&#39;cellAtlasClusters&#39;],color_map=&#39;viridis&#39;,size=50,legend_loc=&#39;on data&#39;)
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_65_0.png" /></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sc.pl.umap(neurons, color=[&#39;XLOC_040584&#39;,&#39;XLOC_019434&#39;,&#39;TRINITY_DN20104_c0_g1_i1.mrna1&#39;,
+                           &#39;XLOC_017097&#39;,&#39;XLOC_041402&#39;,&#39;XLOC_004021&#39;,
+                           &#39;XLOC_030120&#39;,&#39;XLOC_008730&#39;,&#39;XLOC_035224&#39;,&#39;XLOC_021799&#39;,&#39;XLOC_014624&#39;],color_map=&#39;viridis&#39;,size=50,legend_loc=&#39;on data&#39;,
+           title=[&#39;GRWGamide&#39;,&#39;RFamide&#39;,&#39;PRPamide&#39;,
+                  &#39;GLWamide2&#39;,&#39;YFamide&#39;,&#39;FLFamide&#39;,
+                  &#39;PP17&#39;,&#39;PP Candidate G[KR][KRED]&#39;,&#39;PP Candidate 2&#39;,&#39;PP Candidate 3&#39;,&#39;PP Candidate G[LI]W repeats&#39;])
+</code></pre></div>
+</td></tr></table>
+<p><img alt="png" src="../stimulation_Analysis_files/stimulation_Analysis_66_0.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../deSeq2Analysis_StarvationResponse/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Extraction of Differentially Expressed Genes Under Starvation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../deSeq2Analysis_StimulationResponse/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Extraction of Differentially Expressed Genes Under Starvation
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['search.suggest', 'search.highlight'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

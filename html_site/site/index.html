@@ -1,0 +1,887 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Walthrough for Whole Organisms Mutliplexed Data Analysis">
+      
+      
+      
+        <meta name="author" content="Tara Chari">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>WHAMSeqAnalysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#analysis-of-multiplexed-single-cell-clytia-medusae-experiments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="." title="WHAMSeqAnalysis" class="md-header-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WHAMSeqAnalysis
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="WHAMSeqAnalysis" class="md-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WHAMSeqAnalysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-analysis-notebooks" class="md-nav__link">
+    All Analysis Notebooks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors" class="md-nav__link">
+    Authors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    Acknowledgments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        ClickTag Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ClickTag Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          ClickTag Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/cellRangerClickTagCounts/" class="md-nav__link">
+        Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/kallistobusStarvClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/kallistobusStimClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        cDNA Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="cDNA Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          cDNA Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/filterStarvCells_ClickTags/" class="md-nav__link">
+        Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/kallistoBusRuns_StarvAndStim/" class="md-nav__link">
+        Quantification of cDNA Counts with kallisto-bustools (All Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Cell Atlas and Perturbation Response
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cell Atlas and Perturbation Response" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Cell Atlas and Perturbation Response
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/cellRangerClustering_Starvation/" class="md-nav__link">
+        Initial Cell Atlas Clustering from Cell Ranger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/starvation_Analysis/" class="md-nav__link">
+        Cell Atlas Clustering and Analysis from kallisto-bustools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/neuronSubpop_Analysis/" class="md-nav__link">
+        Analysis of Neuron Subpopulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/pseudotime_Analysis/" class="md-nav__link">
+        Pseudotime Analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/deSeq2Analysis_StarvationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Stimulation Data Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stimulation Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Stimulation Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/stimulation_Analysis/" class="md-nav__link">
+        Cell Atlas Concordance and Perturbation Response
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/deSeq2Analysis_StimulationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Inter-Experimental Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Inter-Experimental Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Inter-Experimental Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/allDistanceCalculations/" class="md-nav__link">
+        Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Explore Mutliplexed Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Explore Mutliplexed Datasets" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Explore Mutliplexed Datasets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/MARIMBAAnnosAnalysis/" class="md-nav__link">
+        Generation Cell Atlas with MARIMBA Transcriptome
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/MARIMBAAtlasSearchAndPlot/" class="md-nav__link">
+        Explore MARIMBA-Annotated Cell Atlas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notebooks/cellAtlasSearchAndPlot/" class="md-nav__link">
+        Explore Original Cell Atlas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-analysis-notebooks" class="md-nav__link">
+    All Analysis Notebooks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors" class="md-nav__link">
+    Authors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    Acknowledgments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="analysis-of-multiplexed-single-cell-clytia-medusae-experiments">Analysis of Multiplexed, Single-Cell <em>Clytia</em> Medusae Experiments<a class="headerlink" href="#analysis-of-multiplexed-single-cell-clytia-medusae-experiments" title="Permanent link">&para;</a></h1>
+<p>Notebooks for reproducing all figures and analysis in the <strong>Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of <em>Clytia</em> Medusae Cell Types</strong> preprint. <a href="https://doi.org/10.1101/2021.01.22.427844">doi</a></p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.</p>
+<p>All saved/processed data used for analysis is streamed to the notebooks from <a href="https://data.caltech.edu/">CaltechData</a>.</p>
+<h2 id="all-analysis-notebooks">All Analysis Notebooks<a class="headerlink" href="#all-analysis-notebooks" title="Permanent link">&para;</a></h2>
+<p><strong>1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">a</span><span class="p">)</span> <span class="n">ClickTagDemultiplexing</span>
+
+  <span class="o">-</span> <span class="n">cellRangerClickTagCounts</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Demultiplexing</span> <span class="n">of</span> <span class="n">ClickTag</span> <span class="n">fastqs</span> <span class="k">for</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">Cell</span> <span class="n">Ranger</span> <span class="n">bam</span> <span class="n">files</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Cell</span> <span class="n">Ranger</span> <span class="n">bam</span> <span class="n">files</span> <span class="n">of</span> <span class="n">ClickTags</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">ClickTags</span>
+
+
+
+  <span class="o">-</span> <span class="n">kallistobusStarvClickTags</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Demultiplexing</span> <span class="n">of</span> <span class="n">ClickTag</span> <span class="n">fastqs</span> <span class="k">for</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">bustools</span> <span class="n">workflow</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Raw</span> <span class="n">ClickTag</span> <span class="n">fastqs</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">ClickTags</span> <span class="p">(</span><span class="n">compared</span> <span class="n">to</span> <span class="n">previour</span> <span class="n">count</span> <span class="n">matrices</span><span class="p">)</span>
+
+
+  <span class="o">-</span> <span class="n">kallistobusStimClickTags</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Demultiplexing</span> <span class="n">of</span> <span class="n">ClickTag</span> <span class="n">fastqs</span> <span class="k">for</span> <span class="n">stimulation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">bustools</span> <span class="n">workflow</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Raw</span> <span class="n">ClickTag</span> <span class="n">fastqs</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">ClickTags</span> <span class="ow">and</span> <span class="n">filtered</span> <span class="n">cell</span> <span class="n">barcodes</span>
+
+
+<span class="n">b</span><span class="p">)</span> <span class="n">cDNAFiltering</span>
+
+  <span class="o">-</span> <span class="n">filterStarvCells_ClickTags</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Filtering</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">barcodes</span> <span class="n">from</span> <span class="n">cellRangerClickTagCounts</span> <span class="n">ClickTag</span> <span class="n">counts</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">ClickTag</span> <span class="n">count</span> <span class="n">matrices</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Filtered</span> <span class="n">cell</span> <span class="n">barcodes</span> <span class="ow">and</span> <span class="n">condition</span> <span class="n">labels</span>
+
+
+  <span class="o">-</span> <span class="n">kallistoBusRuns_StarvAndStim</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="p">(</span><span class="n">Gene</span><span class="p">)</span> <span class="n">Quantification</span> <span class="n">of</span> <span class="n">cDNA</span> <span class="n">fastqs</span> <span class="n">from</span> <span class="n">starvation</span> <span class="ow">and</span> <span class="n">stimulation</span> <span class="n">experiments</span> <span class="n">with</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">bustools</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Raw</span> <span class="n">cDNA</span> <span class="n">fastqs</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">objects</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">each</span> <span class="n">experiment</span>
+</code></pre></div>
+
+<p><strong>2) CellAtlasAnalysis  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">cellRangerClustering_Starvation</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Initial</span> <span class="n">clustering</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">from</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">raw</span> <span class="n">Cell</span> <span class="n">Ranger</span> <span class="p">(</span><span class="n">cDNA</span><span class="p">)</span> <span class="n">matrices</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Cell</span> <span class="n">Ranger</span> <span class="n">matrix</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">clusters</span> <span class="ow">and</span> <span class="n">highly</span> <span class="n">variable</span> <span class="n">genes</span>
+
+
+<span class="o">-</span> <span class="n">starvation_Analysis</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Clustering</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">from</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">processed</span> <span class="n">matrices</span> <span class="p">(</span><span class="n">compared</span> <span class="n">to</span> <span class="n">cellRangerClustering_Starvation</span> <span class="n">output</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">kallisto</span> <span class="n">anndata</span> <span class="n">output</span> 
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">clusters</span> <span class="ow">and</span> <span class="n">highly</span> <span class="n">variable</span> <span class="n">genes</span> <span class="ow">and</span> <span class="n">analysis</span> <span class="n">of</span> <span class="n">perturbation</span> <span class="n">response</span>
+
+<span class="o">-</span> <span class="n">deSeq2Analysis_StarvationResponse</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">DeSeq2</span> <span class="n">analysis</span> <span class="k">for</span> <span class="n">extracting</span> <span class="n">perturbed</span> <span class="n">genes</span> <span class="n">from</span> <span class="n">starved</span> <span class="n">cells</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">starvation_Analysis</span> 
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Genes</span> <span class="n">that</span> <span class="n">are</span> <span class="n">differentially</span> <span class="n">expressed</span> <span class="n">under</span> <span class="n">starvation</span> <span class="p">(</span><span class="s1">&#39;perturbed&#39;</span> <span class="n">genes</span><span class="p">)</span>
+
+
+<span class="o">-</span> <span class="n">neuronSubpop_Analysis</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Sub</span><span class="o">-</span><span class="n">clustering</span> <span class="n">of</span> <span class="n">neural</span> <span class="n">cell</span> <span class="n">types</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">starvation_Analysis</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">neural</span> <span class="n">cells</span> <span class="n">with</span> <span class="n">clusters</span> <span class="ow">and</span> <span class="n">marker</span> <span class="n">genes</span> <span class="k">for</span> <span class="n">subpopulations</span>
+
+
+<span class="o">-</span> <span class="n">pseudotime_Analysis</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Pseudotime</span> <span class="n">analysis</span> <span class="n">of</span> <span class="n">neural</span> <span class="ow">and</span> <span class="n">nematocyte</span> <span class="n">cell</span> <span class="n">types</span> <span class="n">from</span> <span class="n">the</span> <span class="n">i</span><span class="o">-</span><span class="n">cell</span> <span class="n">population</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">starvation_Analysis</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Ranking</span> <span class="n">of</span> <span class="n">genes</span> <span class="n">contributing</span> <span class="n">to</span> <span class="n">pseudotime</span> <span class="n">trajectories</span> <span class="n">of</span> <span class="n">neural</span> <span class="ow">and</span> <span class="n">nematocyte</span> <span class="n">cell</span> <span class="n">types</span>
+</code></pre></div>
+
+<p><strong>3) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">stimulation_Analysis</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Clustering</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">from</span> <span class="n">stimulation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">processed</span> <span class="n">matrices</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">kallisto</span> <span class="n">anndata</span> <span class="n">output</span> 
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">stimulation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">clusters</span> <span class="ow">and</span> <span class="n">highly</span> <span class="n">variable</span> <span class="n">genes</span> <span class="ow">and</span> <span class="n">analysis</span> <span class="n">of</span> <span class="n">perturbation</span> <span class="n">response</span>
+
+
+<span class="o">-</span> <span class="n">deSeq2Analysis_StimulationResponse</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">DeSeq2</span> <span class="n">analysis</span> <span class="k">for</span> <span class="n">extracting</span> <span class="n">perturbed</span> <span class="n">genes</span> <span class="n">from</span> <span class="n">stimulated</span> <span class="n">cells</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">stimulation_Analysis</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Genes</span> <span class="n">that</span> <span class="n">are</span> <span class="n">differentially</span> <span class="n">expressed</span> <span class="n">under</span> <span class="n">stimulation</span> <span class="p">(</span><span class="n">DI</span><span class="o">/</span><span class="n">KCl</span><span class="p">)</span> <span class="p">(</span><span class="s1">&#39;perturbed&#39;</span> <span class="n">genes</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>4) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">allDistanceCalculations</span><span class="p">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Calculations</span> <span class="k">for</span> <span class="n">inter</span><span class="o">-</span> <span class="k">and</span> <span class="n">intra</span><span class="o">-</span> <span class="k">cluster</span> <span class="n">distances</span> <span class="k">in</span> <span class="n">starvation</span> <span class="k">and</span> <span class="n">stimulation</span> <span class="n">experiments</span> 
+    <span class="o">-</span> <span class="k">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">objects</span> <span class="k">from</span> <span class="n">stimulation_Analysis</span> <span class="k">and</span> <span class="n">starvation_Analysis</span>
+    <span class="o">-</span> <span class="k">Output</span><span class="p">:</span> <span class="n">Merged</span> <span class="n">dataset</span> <span class="k">from</span> <span class="k">both</span> <span class="n">experiments</span> <span class="k">and</span> <span class="n">distance</span><span class="o">-</span><span class="n">based</span> <span class="n">analysis</span>
+</code></pre></div>
+
+<p><em>---------- For (User) Gene Searching and Plotting ----------</em></p>
+<p><strong>5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">MARIMBAAnnosAnalysis</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Quantification</span> <span class="n">of</span> <span class="n">raw</span> <span class="n">starvation</span> <span class="n">cDNA</span> <span class="n">fastqs</span> <span class="n">with</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">bustools</span> <span class="n">workflow</span> <span class="ow">and</span> <span class="n">MARIMBA</span> <span class="n">annotation</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Raw</span> <span class="n">cDNA</span> <span class="n">starvation</span> <span class="n">fastqs</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">with</span> <span class="n">clusters</span> <span class="ow">and</span> <span class="n">highly</span> <span class="n">variable</span> <span class="n">genes</span> <span class="p">(</span><span class="n">compared</span> <span class="n">to</span> <span class="n">starvation_Analysis</span><span class="p">)</span>
+
+
+<span class="o">-</span> <span class="n">MARIMBAAtlasSearchAndPlot</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Plotting</span> <span class="n">of</span> <span class="n">genes</span> <span class="n">of</span> <span class="n">interest</span> <span class="n">on</span> <span class="n">MARIMBA</span><span class="o">-</span><span class="n">quantified</span> <span class="n">anndata</span> <span class="n">object</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">Anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">MARIMBAAnnosAnalysis</span><span class="p">,</span> <span class="n">genes</span> <span class="n">of</span> <span class="n">interest</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Gene</span> <span class="n">expression</span> <span class="n">profiles</span> <span class="n">on</span> <span class="n">cell</span> <span class="n">atlas</span>
+
+
+<span class="o">-</span> <span class="n">cellAtlasSearchAndPlot</span><span class="o">.</span><span class="n">ipynb</span>
+
+    <span class="o">-</span> <span class="n">Plotting</span> <span class="n">of</span> <span class="n">genes</span> <span class="n">of</span> <span class="n">interest</span> <span class="n">on</span> <span class="n">Trinity</span><span class="o">-</span><span class="n">quantified</span> <span class="n">anndata</span> <span class="n">object</span> <span class="p">(</span><span class="n">used</span> <span class="k">for</span> <span class="n">all</span> <span class="n">non</span><span class="o">-</span><span class="n">Marimba</span> <span class="n">notebooks</span><span class="o">/</span><span class="n">main</span> <span class="n">paper</span> <span class="n">analysis</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Input</span><span class="p">:</span> <span class="n">Clustered</span> <span class="n">anndata</span> <span class="n">object</span> <span class="n">from</span> <span class="n">stimulation_Analysis</span><span class="p">,</span> <span class="n">genes</span> <span class="n">of</span> <span class="n">interest</span>
+    <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Gene</span> <span class="n">expression</span> <span class="n">profiles</span> <span class="n">on</span> <span class="n">cell</span> <span class="n">atlas</span> <span class="ow">and</span> <span class="n">neuron</span> <span class="n">subpopulations</span>
+</code></pre></div>
+
+<h2 id="authors">Authors<a class="headerlink" href="#authors" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Tara Chari</li>
+</ul>
+<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
+<p>Several of the pre-processing workflows and initial analyses for the project were first implemented by Jase Gehring.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="notebooks/cellRangerClickTagCounts/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['search.suggest', 'search.highlight'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

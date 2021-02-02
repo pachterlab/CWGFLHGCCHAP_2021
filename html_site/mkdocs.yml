@@ -1,0 +1,57 @@
+site_name: WHAMSeqAnalysis
+site_description: Walthrough for Whole Organisms Mutliplexed Data Analysis 
+site_author: Tara Chari
+repo_url: https://github.com/pachterlab/CWGFLHGCCHAP_2021
+
+theme:
+  name: material
+  features:
+  - search.suggest
+  - search.highlight
+  language: en
+
+markdown_extensions:
+- toc:
+    permalink: true
+- admonition
+- codehilite
+- extra
+- pymdownx.highlight:
+    linenums: true
+    linenums_style: pymdownx.inline
+- pymdownx.inlinehilite
+- pymdownx.superfences
+- pymdownx.betterem:
+    smart_enable: all
+
+
+nav:
+- Home: index.md
+- ClickTag Pre-processing:
+  - Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data): notebooks/cellRangerClickTagCounts.md
+  - Quantification of ClickTag Counts with kallisto-bustools (Starvation Data): notebooks/kallistobusStarvClickTags.md
+  - Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data): notebooks/kallistobusStimClickTags.md
+- cDNA Pre-processing:
+  - Initial cDNA Filtering with Cell Ranger Data (Starvation Data): notebooks/filterStarvCells_ClickTags.md
+  - Quantification of cDNA Counts with kallisto-bustools (All Data): notebooks/kallistoBusRuns_StarvAndStim.md
+- Cell Atlas and Perturbation Response:
+  - Initial Cell Atlas Clustering from Cell Ranger: notebooks/cellRangerClustering_Starvation.md
+  - Cell Atlas Clustering and Analysis from kallisto-bustools: notebooks/starvation_Analysis.md
+  - Analysis of Neuron Subpopulations: notebooks/neuronSubpop_Analysis.md
+  - Pseudotime Analysis: notebooks/pseudotime_Analysis.md
+  - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StarvationResponse.md
+- Stimulation Data Analysis:
+  - Cell Atlas Concordance and Perturbation Response: notebooks/stimulation_Analysis.md
+  - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StimulationResponse.md
+- Inter-Experimental Analysis:
+  - Comparative Analysis of Cell Atlas Concordance and Perturbation Responses: notebooks/allDistanceCalculations.md
+- Explore Mutliplexed Datasets:
+  - Generation Cell Atlas with MARIMBA Transcriptome: notebooks/MARIMBAAnnosAnalysis.md
+  - Explore MARIMBA-Annotated Cell Atlas: notebooks/MARIMBAAtlasSearchAndPlot.md
+  - Explore Original Cell Atlas: notebooks/cellAtlasSearchAndPlot.md
+
+plugins:
+  - mkdocs-jupyter
+
+
+

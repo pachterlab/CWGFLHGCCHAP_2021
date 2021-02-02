@@ -1,0 +1,1324 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Walthrough for Whole Organisms Mutliplexed Data Analysis">
+      
+      
+      
+        <meta name="author" content="Tara Chari">
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
+    
+    
+      
+        <title>Quantification of cDNA Counts with kallisto-bustools (All Data) - WHAMSeqAnalysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#download-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-header-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            WHAMSeqAnalysis
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Quantification of cDNA Counts with kallisto-bustools (All Data)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WHAMSeqAnalysis" class="md-nav__button md-logo" aria-label="WHAMSeqAnalysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    WHAMSeqAnalysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        ClickTag Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ClickTag Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          ClickTag Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClickTagCounts/" class="md-nav__link">
+        Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStarvClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kallistobusStimClickTags/" class="md-nav__link">
+        Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        cDNA Pre-processing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="cDNA Pre-processing" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          cDNA Pre-processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filterStarvCells_ClickTags/" class="md-nav__link">
+        Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Quantification of cDNA Counts with kallisto-bustools (All Data)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Quantification of cDNA Counts with kallisto-bustools (All Data)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kallisto-bus-on-data-with-starvation-cdna-data" class="md-nav__link">
+    Run kallisto bus on data with Starvation cDNA data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kallisto-bus-on-data-with-stimulation-cdna-data" class="md-nav__link">
+    Run kallisto bus on data with Stimulation cDNA data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Cell Atlas and Perturbation Response
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cell Atlas and Perturbation Response" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Cell Atlas and Perturbation Response
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellRangerClustering_Starvation/" class="md-nav__link">
+        Initial Cell Atlas Clustering from Cell Ranger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starvation_Analysis/" class="md-nav__link">
+        Cell Atlas Clustering and Analysis from kallisto-bustools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuronSubpop_Analysis/" class="md-nav__link">
+        Analysis of Neuron Subpopulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pseudotime_Analysis/" class="md-nav__link">
+        Pseudotime Analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StarvationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        Stimulation Data Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stimulation Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Stimulation Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stimulation_Analysis/" class="md-nav__link">
+        Cell Atlas Concordance and Perturbation Response
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deSeq2Analysis_StimulationResponse/" class="md-nav__link">
+        Extraction of Differentially Expressed Genes Under Starvation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+      
+      <label class="md-nav__link" for="nav-6">
+        Inter-Experimental Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Inter-Experimental Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-6">
+          <span class="md-nav__icon md-icon"></span>
+          Inter-Experimental Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allDistanceCalculations/" class="md-nav__link">
+        Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Explore Mutliplexed Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Explore Mutliplexed Datasets" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Explore Mutliplexed Datasets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAnnosAnalysis/" class="md-nav__link">
+        Generation Cell Atlas with MARIMBA Transcriptome
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MARIMBAAtlasSearchAndPlot/" class="md-nav__link">
+        Explore MARIMBA-Annotated Cell Atlas
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cellAtlasSearchAndPlot/" class="md-nav__link">
+        Explore Original Cell Atlas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download-data" class="md-nav__link">
+    Download Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-packages" class="md-nav__link">
+    Import Packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kallisto-bus-on-data-with-starvation-cdna-data" class="md-nav__link">
+    Run kallisto bus on data with Starvation cDNA data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-kallisto-bus-on-data-with-stimulation-cdna-data" class="md-nav__link">
+    Run kallisto bus on data with Stimulation cDNA data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pachterlab/CWGFLHGCCHAP_2021/edit/master/docs/notebooks/kallistoBusRuns_StarvAndStim.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Quantification of cDNA Counts with kallisto-bustools (All Data)</h1>
+                
+                <p><a href="https://colab.research.google.com/github/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/Preprocessing/cDNAFiltering/kallistoBusRuns_StarvAndStim.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!date
+</code></pre></div>
+</td></tr></table>
+<h3 id="download-data"><strong>Download Data</strong><a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Install kallisto and bustools
+
+!wget --quiet https://github.com/pachterlab/kallisto/releases/download/v0.46.2/kallisto_linux-v0.46.2.tar.gz
+!tar -xf kallisto_linux-v0.46.2.tar.gz
+!cp kallisto/kallisto /usr/local/bin/
+
+!wget --quiet https://github.com/BUStools/bustools/releases/download/v0.40.0/bustools_linux-v0.40.0.tar.gz
+!tar -xf bustools_linux-v0.40.0.tar.gz
+!cp bustools/bustools /usr/local/bin/
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import requests
+from tqdm import tnrange, tqdm_notebook
+def download_file(doi,ext):
+    url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+    r = requests.get(url).json()
+    netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+    r = requests.get(netcdf_url,stream=True)
+    #Set file name
+    fname = doi.split(&#39;/&#39;)[-1]+ext
+    #Download file with progress bar
+    if r.status_code == 403:
+        print(&quot;File Unavailable&quot;)
+    if &#39;content-length&#39; not in r.headers:
+        print(&quot;Did not get file&quot;)
+    else:
+        with open(fname, &#39;wb&#39;) as f:
+            total_length = int(r.headers.get(&#39;content-length&#39;))
+            pbar = tnrange(int(total_length/1024), unit=&quot;B&quot;)
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    pbar.update()
+                    f.write(chunk)
+        return fname
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Get reference data () fastq&#39;s)
+
+#Trinity Transcripts
+download_file(&#39;10.22002/D1.1825&#39;,&#39;.gz&#39;)
+
+#Gff3 (Trinity)
+download_file(&#39;10.22002/D1.1824&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">23757</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">4972</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1824.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Get doi links for all Starvation cDNA fastq.gz files
+starvFiles = []
+dois = [&#39;10.22002/D1.1840&#39;,&#39;10.22002/D1.1841&#39;,&#39;10.22002/D1.1842&#39;,&#39;10.22002/D1.1843&#39;,
+        &#39;10.22002/D1.1844&#39;,&#39;10.22002/D1.1845&#39;,&#39;10.22002/D1.1846&#39;,&#39;10.22002/D1.1847&#39;,
+        &#39;10.22002/D1.1848&#39;,&#39;10.22002/D1.1849&#39;,&#39;10.22002/D1.1850&#39;,&#39;10.22002/D1.1851&#39;,
+        &#39;10.22002/D1.1852&#39;,&#39;10.22002/D1.1853&#39;,&#39;10.22002/D1.1854&#39;,&#39;10.22002/D1.1855&#39;] #16 doi numbers
+for doi in dois:
+  url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+  r = requests.get(url).json()
+  netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+
+  starvFiles += [netcdf_url]
+
+s1 = starvFiles[0]
+s2 = starvFiles[1]
+s3 = starvFiles[2]
+s4 = starvFiles[3]
+s5 = starvFiles[4]
+s6 = starvFiles[5]
+s7 = starvFiles[6]
+s8 = starvFiles[7]
+
+s9 = starvFiles[8]
+s10 = starvFiles[9]
+s11 = starvFiles[10]
+s12 = starvFiles[11]
+s13 = starvFiles[12]
+s14 = starvFiles[13]
+s15 = starvFiles[14]
+s16 = starvFiles[15]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Get doi links for all Stimulation cDNA fastq.gz files
+stimFiles = []
+dois = [&#39;10.22002/D1.1860&#39;,&#39;10.22002/D1.1863&#39;,&#39;10.22002/D1.1864&#39;,&#39;10.22002/D1.1865&#39;,
+        &#39;10.22002/D1.1866&#39;,&#39;10.22002/D1.1868&#39;,&#39;10.22002/D1.1870&#39;,&#39;10.22002/D1.1871&#39;] #8 numbers
+for doi in dois:
+  url = &#39;https://api.datacite.org/dois/&#39;+doi+&#39;/media&#39;
+  r = requests.get(url).json()
+  netcdf_url = r[&#39;data&#39;][0][&#39;attributes&#39;][&#39;url&#39;]
+
+  stimFiles += [netcdf_url]
+
+
+stim1 = stimFiles[0]
+stim2 = stimFiles[1]
+stim3 = stimFiles[2]
+stim4 = stimFiles[3]
+stim5 = stimFiles[4]
+stim6 = stimFiles[5]
+stim7 = stimFiles[6]
+stim8 = stimFiles[7]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Get original, CellRanger clustered starvation adata
+download_file(&#39;10.22002/D1.1798&#39;,&#39;.gz&#39;)
+
+#Cell barcodes selected from Stim ClickTags
+download_file(&#39;10.22002/D1.1817&#39;,&#39;.gz&#39;)
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="p">.</span><span class="mi">6</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ipykernel_launcher</span><span class="p">.</span><span class="n">py</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span> <span class="n">TqdmDeprecationWarning</span><span class="p">:</span> <span class="n">Please</span> <span class="n">use</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">notebook</span><span class="p">.</span><span class="n">trange</span><span class="o">`</span> <span class="k">instead</span> <span class="k">of</span> <span class="o">`</span><span class="n">tqdm</span><span class="p">.</span><span class="n">tnrange</span><span class="o">`</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">45376</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+<span class="n">HBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">(</span><span class="n">FloatProgress</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="k">max</span><span class="o">=</span><span class="mi">183</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)))</span>
+
+
+
+
+
+<span class="s1">&#39;D1.1817.gz&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!gunzip *.gz
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!pip install --quiet anndata
+!pip install --quiet scanpy
+!pip install --quiet louvain
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">[K     |████████████████████████████████| 122kB 7.6MB/s </span>
+<span class="err">[K     |████████████████████████████████| 7.7MB 6.5MB/s </span>
+<span class="err">[K     |████████████████████████████████| 51kB 6.6MB/s </span>
+<span class="err">[K     |████████████████████████████████| 71kB 9.2MB/s </span>
+<span class="err">[?25h  Building wheel for sinfo (setup.py) ... [?25l[?25hdone</span>
+<span class="err">[K     |████████████████████████████████| 2.2MB 9.6MB/s </span>
+<span class="err">[K     |████████████████████████████████| 3.2MB 45.6MB/s </span>
+<span class="err">[?25h</span>
+</code></pre></div>
+
+<h3 id="import-packages"><strong>Import Packages</strong><a class="headerlink" href="#import-packages" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>import pandas as pd
+import anndata
+import scanpy as sc
+import numpy as np
+import scipy.sparse
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+sc.set_figure_params(dpi=125)
+</code></pre></div>
+</td></tr></table>
+<h3 id="run-kallisto-bus-on-data-with-starvation-cdna-data"><strong>Run kallisto bus on data with Starvation cDNA data</strong><a class="headerlink" href="#run-kallisto-bus-on-data-with-starvation-cdna-data" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Make Kallisto index (referene https://www.kallistobus.tools/getting_started)
+!mv D1.1825 transcripts.fa
+!kallisto index -i clytia_trin.idx -k 31 transcripts.fa
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">loading</span><span class="w"> </span><span class="n">fasta</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">transcripts</span><span class="p">.</span><span class="n">fa</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mer</span><span class="w"> </span><span class="nl">length</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="nl">warning</span><span class="p">:</span><span class="w"> </span><span class="n">clipped</span><span class="w"> </span><span class="k">off</span><span class="w"> </span><span class="n">poly</span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="n">tail</span><span class="w"> </span><span class="p">(</span><span class="n">longer</span><span class="w"> </span><span class="k">than</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">sequences</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="nl">warning</span><span class="p">:</span><span class="w"> </span><span class="n">replaced</span><span class="w"> </span><span class="mi">205989</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">ACGUT</span><span class="w"> </span><span class="n">characters</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">sequence</span><span class="w"></span>
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">pseudorandom</span><span class="w"> </span><span class="n">nucleotides</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">counting</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mers</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="nl">tcmalloc</span><span class="p">:</span><span class="w"> </span><span class="k">large</span><span class="w"> </span><span class="n">alloc</span><span class="w"> </span><span class="mi">1610612736</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x6a69c000</span><span class="w"> </span><span class="err">@</span><span class="w">  </span><span class="mh">0x7f71df7d61e7</span><span class="w"> </span><span class="mh">0x6f46bd</span><span class="w"> </span><span class="mh">0x6f4739</span><span class="w"> </span><span class="mh">0x4af899</span><span class="w"> </span><span class="mh">0x4a7a68</span><span class="w"> </span><span class="mh">0x4aec09</span><span class="w"> </span><span class="mh">0x44e175</span><span class="w"> </span><span class="mh">0x7f71de7f2bf7</span><span class="w"> </span><span class="mh">0x452f19</span><span class="w"></span>
+<span class="n">done</span><span class="p">.</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">building</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Bruijn</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="n">done</span><span class="w"> </span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">creating</span><span class="w"> </span><span class="n">equivalence</span><span class="w"> </span><span class="n">classes</span><span class="w"> </span><span class="p">...</span><span class="w">  </span><span class="n">done</span><span class="w"></span>
+<span class="o">[</span><span class="n">build</span><span class="o">]</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Bruijn</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="mi">410850</span><span class="w"> </span><span class="n">contigs</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">contains</span><span class="w"> </span><span class="mi">61068880</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mers</span><span class="w"></span>
+</code></pre></div>
+
+<p>Run kallisto for one set of samples</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Create BUS files from fastq&#39;s, can&#39;t do separate lines
+!mkfifo R1.gz R2.gz R1_02.gz R2_02.gz R1_03.gz R2_03.gz R1_04.gz R2_04.gz; curl -Ls $s1 &gt; R1.gz &amp; curl -Ls $s2 &gt; R2.gz &amp; curl -Ls $s3 &gt; R1_02.gz &amp; curl -Ls $s4 &gt; R2_02.gz &amp; curl -Ls $s5 &gt; R1_03.gz &amp; curl -Ls $s6 &gt; R2_03.gz &amp; curl -Ls $s7 &gt; R1_04.gz &amp; curl -Ls $s8 &gt; R2_04.gz &amp; kallisto bus -i clytia_trin.idx -o bus_output/ -x 10xv2 -t 2 R1.gz R2.gz R1_02.gz R2_02.gz R1_03.gz R2_03.gz R1_04.gz R2_04.gz 
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mer</span><span class="w"> </span><span class="nl">length</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nl">targets</span><span class="p">:</span><span class="w"> </span><span class="mi">113</span><span class="p">,</span><span class="mi">915</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="nl">mers</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="mi">068</span><span class="p">,</span><span class="mi">880</span><span class="w"></span>
+<span class="nl">tcmalloc</span><span class="p">:</span><span class="w"> </span><span class="k">large</span><span class="w"> </span><span class="n">alloc</span><span class="w"> </span><span class="mi">1610612736</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x2498000</span><span class="w"> </span><span class="err">@</span><span class="w">  </span><span class="mh">0x7fd16fd721e7</span><span class="w"> </span><span class="mh">0x6f46bd</span><span class="w"> </span><span class="mh">0x6f4739</span><span class="w"> </span><span class="mh">0x4af899</span><span class="w"> </span><span class="mh">0x4a9a10</span><span class="w"> </span><span class="mh">0x44e2bc</span><span class="w"> </span><span class="mh">0x7fd16ed8ebf7</span><span class="w"> </span><span class="mh">0x452f19</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">equivalence</span><span class="w"> </span><span class="nl">classes</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="mi">726</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="n">R1_02</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_02</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="n">R1_03</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_03</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">4</span><span class="err">:</span><span class="w"> </span><span class="n">R1_04</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_04</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">finding</span><span class="w"> </span><span class="n">pseudoalignments</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">done</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span><span class="mi">421</span><span class="p">,</span><span class="mi">150</span><span class="w"> </span><span class="k">reads</span><span class="p">,</span><span class="w"> </span><span class="mi">188</span><span class="p">,</span><span class="mi">296</span><span class="p">,</span><span class="mi">358</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="n">pseudoaligned</span><span class="w"></span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Generate gene-count matrices
+!wget --quiet https://github.com/bustools/getting_started/releases/download/getting_started/10xv2_whitelist.txt
+
+#Make t2g file
+!mv D1.1824 trinity.gff3
+!awk &#39;{ print $12&quot;\t&quot;$10}&#39; trinity.gff3  &gt; t2g_rough.txt
+!sed &#39;s/[&quot;;]//g&#39; t2g_rough.txt &gt; t2g_trin.txt
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#!cd bus_output/
+!mkdir bus_output/genecount/ bus_output/tmp/
+
+!bustools correct -w 10xv2_whitelist.txt -p bus_output/output.bus | bustools sort -T bus_output/tmptmp/ -t 2 -p - | bustools count -o bus_output/genecount/genes -g t2g_trin.txt -e bus_output/matrix.ec -t bus_output/transcripts.txt --genecounts -
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Found 737280 barcodes in the whitelist</span>
+<span class="err">Processed 188296358 BUS records</span>
+<span class="err">In whitelist = 179043072</span>
+<span class="err">Corrected = 3009765</span>
+<span class="err">Uncorrected = 6243521</span>
+<span class="err">Read in 182052837 BUS records</span>
+</code></pre></div>
+
+<p>Run kallisto for other sample set</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Create BUS files from fastq&#39;s
+!mkfifo R1_new.gz R2_new.gz R1_02_new.gz R2_02_new.gz R1_03_new.gz R2_03_new.gz R1_04_new.gz R2_04_new.gz; curl -Ls $s9 &gt; R1_new.gz &amp; curl -Ls $s10 &gt; R2_new.gz &amp; curl -Ls $s11 &gt; R1_02_new.gz &amp; curl -Ls $s12 &gt; R2_02_new.gz &amp; curl -Ls $s13 &gt; R1_03_new.gz &amp; curl -Ls $s14 &gt; R2_03_new.gz &amp; curl -Ls $s15 &gt; R1_04_new.gz &amp; curl -Ls $s16 &gt; R2_04_new.gz &amp; kallisto bus -i clytia_trin.idx -o bus_output_02/ -x 10xv2 -t 2 R1_new.gz R2_new.gz R1_02_new.gz R2_02_new.gz R1_03_new.gz R2_03_new.gz R1_04_new.gz R2_04_new.gz 
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="n">mer</span><span class="w"> </span><span class="nl">length</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nl">targets</span><span class="p">:</span><span class="w"> </span><span class="mi">113</span><span class="p">,</span><span class="mi">915</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">k</span><span class="o">-</span><span class="nl">mers</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="mi">068</span><span class="p">,</span><span class="mi">880</span><span class="w"></span>
+<span class="nl">tcmalloc</span><span class="p">:</span><span class="w"> </span><span class="k">large</span><span class="w"> </span><span class="n">alloc</span><span class="w"> </span><span class="mi">1610612736</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x31d2000</span><span class="w"> </span><span class="err">@</span><span class="w">  </span><span class="mh">0x7fb6760911e7</span><span class="w"> </span><span class="mh">0x6f46bd</span><span class="w"> </span><span class="mh">0x6f4739</span><span class="w"> </span><span class="mh">0x4af899</span><span class="w"> </span><span class="mh">0x4a9a10</span><span class="w"> </span><span class="mh">0x44e2bc</span><span class="w"> </span><span class="mh">0x7fb6750adbf7</span><span class="w"> </span><span class="mh">0x452f19</span><span class="w"></span>
+<span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">equivalence</span><span class="w"> </span><span class="nl">classes</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="mi">726</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">R1_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="n">R1_02_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_02_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="n">R1_03_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_03_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="mi">4</span><span class="err">:</span><span class="w"> </span><span class="n">R1_04_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="w">                               </span><span class="n">R2_04_new</span><span class="p">.</span><span class="n">gz</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">finding</span><span class="w"> </span><span class="n">pseudoalignments</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">done</span><span class="w"></span>
+<span class="o">[</span><span class="n">quant</span><span class="o">]</span><span class="w"> </span><span class="n">processed</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="mi">357</span><span class="p">,</span><span class="mi">482</span><span class="w"> </span><span class="k">reads</span><span class="p">,</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="mi">673</span><span class="p">,</span><span class="mi">174</span><span class="w"> </span><span class="k">reads</span><span class="w"> </span><span class="n">pseudoaligned</span><span class="w"></span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Generate gene-count matrices
+!cd bus_output_02/
+!mkdir bus_output_02/genecount/ bus_output_02/tmp/
+
+!bustools correct -w 10xv2_whitelist.txt -p bus_output_02/output.bus | bustools sort -T bus_output_02/tmp/ -t 2 -p -  | bustools count -o bus_output_02/genecount/genes -g t2g_trin.txt -e bus_output_02/matrix.ec -t bus_output_02/transcripts.txt --genecounts -
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="err">Found 737280 barcodes in the whitelist</span>
+<span class="err">Processed 211673174 BUS records</span>
+<span class="err">In whitelist = 201242063</span>
+<span class="err">Corrected = 3408308</span>
+<span class="err">Uncorrected = 7022803</span>
+<span class="err">Read in 204650371 BUS records</span>
+</code></pre></div>
+
+<p>Merge matrices (Add -1 to first and -2 to second dataset)</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>path = &quot;bus_output/genecount/&quot;
+jelly_adata_01 = sc.read(path+&#39;genes.mtx&#39;, cache=True)
+jelly_adata_01.var_names = pd.read_csv(path+&#39;genes.genes.txt&#39;, header=None)[0]
+jelly_adata_01.obs_names = pd.read_csv(path+&#39;genes.barcodes.txt&#39;, header=None)[0]
+
+jelly_adata_01.obs_names = [i+&quot;-1&quot; for i in jelly_adata_01.obs_names]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>path = &quot;bus_output_02/genecount/&quot;
+jelly_adata_02 = sc.read(path+&#39;genes.mtx&#39;, cache=True)
+jelly_adata_02.var_names = pd.read_csv(path+&#39;genes.genes.txt&#39;, header=None)[0]
+jelly_adata_02.obs_names = pd.read_csv(path+&#39;genes.barcodes.txt&#39;, header=None)[0]
+
+jelly_adata_02.obs_names = [i+&quot;-2&quot; for i in jelly_adata_02.obs_names]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jelly_adata = jelly_adata_01.concatenate(jelly_adata_02,join=&#39;outer&#39;, index_unique=None)
+</code></pre></div>
+</td></tr></table>
+<p>Filter cell barcodes by previous selection done with ClickTag counts</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Filter barcodes by &#39;real&#39; cells
+cellR = anndata.read(&#39;D1.1798&#39;)
+cells = list(cellR.obs_names)
+
+jelly_adata = jelly_adata[cells,:]
+jelly_adata
+</code></pre></div>
+</td></tr></table>
+<div class="codehilite"><pre><span></span><code><span class="n">View</span> <span class="n">of</span> <span class="n">AnnData</span> <span class="n">object</span> <span class="n">with</span> <span class="n">n_obs</span> <span class="err">×</span> <span class="n">n_vars</span> <span class="o">=</span> <span class="mi">13673</span> <span class="err">×</span> <span class="mi">46716</span>
+    <span class="n">obs</span><span class="p">:</span> <span class="s1">&#39;batch&#39;</span>
+</code></pre></div>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jelly_adata.write(&#39;fedStarved_raw.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+<h3 id="run-kallisto-bus-on-data-with-stimulation-cdna-data"><strong>Run kallisto bus on data with Stimulation cDNA data</strong><a class="headerlink" href="#run-kallisto-bus-on-data-with-stimulation-cdna-data" title="Permanent link">&para;</a></h3>
+<p>Run kallisto for one set of samples</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Create BUS files from fastq&#39;s, can&#39;t do separate lines
+!mkfifo R1_stim.gz R2_stim.gz R1_02_stim.gz R2_02_stim.gz ; curl -Ls $stim1 &gt; R1_stim.gz &amp; curl -Ls $stim2 &gt; R2_stim.gz &amp; curl -Ls $stim3 &gt; R1_02_stim.gz &amp; curl -Ls $stim4 &gt; R2_02_stim.gz &amp; kallisto bus -i clytia_trin.idx -o bus_output/ -x 10xv3 -t 2 R1_stim.gz R2_stim.gz R1_02_stim.gz R2_02_stim.gz
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Generate gene-count matrices
+!wget --quiet https://github.com/bustools/getting_started/releases/download/getting_started/10xv3_whitelist.txt
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#!cd bus_output/
+!mkdir bus_output/genecount/ bus_output/tmp/
+
+!bustools correct -w 10xv3_whitelist.txt -p bus_output/output.bus | bustools sort -T bus_output/tmptmp/ -t 2 -p - | bustools count -o bus_output/genecount/genes -g t2g_trin.txt -e bus_output/matrix.ec -t bus_output/transcripts.txt --genecounts -
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>!ls test
+</code></pre></div>
+</td></tr></table>
+<p>Run kallisto for other sample set</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Create BUS files from fastq&#39;s
+
+!mkfifo R1_stim2.gz R2_stim2.gz R1_02_stim2.gz R2_02_stim2.gz ; curl -Ls $stim5 &gt; R1_stim2.gz &amp; curl -Ls $stim6 &gt; R2_stim2.gz &amp; curl -Ls $stim7 &gt; R1_02_stim2.gz &amp; curl -Ls $stim8 &gt; R2_02_stim2.gz &amp; kallisto bus -i clytia_trin.idx -o bus_output_02/ -x 10xv3 -t 2 R1_stim2.gz R2_stim2.gz R1_02_stim2.gz R2_02_stim2.gz
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#Generate gene-count matrices
+!cd bus_output_02/
+!mkdir bus_output_02/genecount/ bus_output_02/tmp/
+
+!bustools correct -w 10xv3_whitelist.txt -p bus_output_02/output.bus | bustools sort -T bus_output_02/tmp/ -t 2 -p -  | bustools count -o bus_output_02/genecount/genes -g t2g_trin.txt -e bus_output_02/matrix.ec -t bus_output_02/transcripts.txt --genecounts -
+</code></pre></div>
+</td></tr></table>
+<p>Merge matrices (Add -1 to first and -2 to second dataset)</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>path = &quot;bus_output/genecount/&quot;
+jelly_adata_01 = sc.read(path+&#39;genes.mtx&#39;, cache=True)
+jelly_adata_01.var_names = pd.read_csv(path+&#39;genes.genes.txt&#39;, header=None)[0]
+jelly_adata_01.obs_names = pd.read_csv(path+&#39;genes.barcodes.txt&#39;, header=None)[0]
+
+jelly_adata_01.obs_names = [i+&quot;-1&quot; for i in jelly_adata_01.obs_names]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>path = &quot;bus_output_02/genecount/&quot;
+jelly_adata_02 = sc.read(path+&#39;genes.mtx&#39;, cache=True)
+jelly_adata_02.var_names = pd.read_csv(path+&#39;genes.genes.txt&#39;, header=None)[0]
+jelly_adata_02.obs_names = pd.read_csv(path+&#39;genes.barcodes.txt&#39;, header=None)[0]
+
+jelly_adata_02.obs_names = [i+&quot;-2&quot; for i in jelly_adata_02.obs_names]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jelly_adata = jelly_adata_01.concatenate(jelly_adata_02,join=&#39;outer&#39;, index_unique=None)
+</code></pre></div>
+</td></tr></table>
+<p>Filter cell barcodes by previous filtering done with ClickTag counts</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Filter barcodes by &#39;real&#39; cells
+!mv D1.1817 jelly4stim_individs_tagCells_50k.mat
+barcodes_list = sio.loadmat(&#39;jelly4stim_individs_tagCells_50k.mat&#39;)
+barcodes_list.pop(&#39;__header__&#39;, None)
+barcodes_list.pop(&#39;__version__&#39;, None)
+barcodes_list.pop(&#39;__globals__&#39;, None)
+
+# Add all cell barcodes for each individual
+barcodes = []
+for b in barcodes_list:
+    if barcodes_list[b] != &quot;None&quot;:
+        barcodes.append(b)
+
+print(len(barcodes))
+
+barcodes = [s.replace(&#39;-1&#39;, &#39;-3&#39;) for s in barcodes]
+barcodes = [s.replace(&#39;-2&#39;, &#39;-1&#39;) for s in barcodes]
+barcodes = [s.replace(&#39;-3&#39;, &#39;-2&#39;) for s in barcodes]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jelly_adata = jelly_adata[barcodes,:]
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>jelly_adata.write(&#39;stimulation_raw.h5ad&#39;)
+</code></pre></div>
+</td></tr></table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../filterStarvCells_ClickTags/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Initial cDNA Filtering with Cell Ranger Data (Starvation Data)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../cellRangerClustering_Starvation/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Initial Cell Atlas Clustering from Cell Ranger
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['search.suggest', 'search.highlight'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
