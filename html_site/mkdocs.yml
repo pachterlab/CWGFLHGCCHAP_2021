@@ -1,5 +1,6 @@
 site_name: WHAMSeqAnalysis
-site_description: Walthrough for Whole Organisms Mutliplexed Data Analysis 
+site_url: https://pachterlab.github.io/CWGFLHGCCHAP_2021/
+site_description: Walkthrough for Whole Organisms Mutliplexed Data Analysis 
 site_author: Tara Chari
 repo_url: https://github.com/pachterlab/CWGFLHGCCHAP_2021
 
