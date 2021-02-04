@@ -1,5 +1,7 @@
 # Analysis of Multiplexed, Single-Cell *Clytia* Medusae Experiments
-Notebooks for reproducing all figures and analysis in the *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of *Clytia* Medusae Cell Types* preprint. doi: https://doi.org/10.1101/2021.01.22.427844
+[![DOI](https://zenodo.org/badge/263981523.svg)](https://zenodo.org/badge/latestdoi/263981523)
+
+Notebooks for reproducing all figures and analysis in the *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of *Clytia* Medusae Cell Types* [preprint](https://doi.org/10.1101/2021.01.22.427844).
 
 ## Getting Started
 
@@ -22,7 +24,7 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
       
       
       
-      - kallistobusStarvClickTagsProcessing.ipynb
+      - kallistobusStarvClickTags.ipynb
       
         - Demultiplexing of ClickTag fastqs for starvation experiment with kallisto-bustools workflow
 		- Input: Raw ClickTag fastqs
