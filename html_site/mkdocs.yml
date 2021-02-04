@@ -14,42 +14,34 @@ theme:
 markdown_extensions:
 - toc:
     permalink: true
-- admonition
 - codehilite
-- extra
-- pymdownx.highlight:
-    linenums: true
-    linenums_style: pymdownx.inline
-- pymdownx.inlinehilite
-- pymdownx.superfences
-- pymdownx.betterem:
-    smart_enable: all
+
 
 
 nav:
 - Home: index.md
 - ClickTag Pre-processing:
-  - Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data): notebooks/cellRangerClickTagCounts.md
-  - Quantification of ClickTag Counts with kallisto-bustools (Starvation Data): notebooks/kallistobusStarvClickTags.md
-  - Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data): notebooks/kallistobusStimClickTags.md
+  - Initial Quantification of ClickTag Counts with Cell Ranger (Starvation Data): notebooks/cellRangerClickTagCounts.ipynb
+  - Quantification of ClickTag Counts with kallisto-bustools (Starvation Data): notebooks/kallistobusStarvClickTags.ipynb
+  - Quantification of ClickTag Counts with kallisto-bustools (Stimulation Data): notebooks/kallistobusStimClickTags.ipynb
 - cDNA Pre-processing:
-  - Initial cDNA Filtering with Cell Ranger Data (Starvation Data): notebooks/filterStarvCells_ClickTags.md
-  - Quantification of cDNA Counts with kallisto-bustools (All Data): notebooks/kallistoBusRuns_StarvAndStim.md
+  - Initial cDNA Filtering with Cell Ranger Data (Starvation Data): notebooks/filterStarvCells_ClickTags.ipynb
+  - Quantification of cDNA Counts with kallisto-bustools (All Data): notebooks/kallistoBusRuns_StarvAndStim.ipynb
 - Cell Atlas and Perturbation Response:
-  - Initial Cell Atlas Clustering from Cell Ranger: notebooks/cellRangerClustering_Starvation.md
-  - Cell Atlas Clustering and Analysis from kallisto-bustools: notebooks/starvation_Analysis.md
-  - Analysis of Neuron Subpopulations: notebooks/neuronSubpop_Analysis.md
-  - Pseudotime Analysis: notebooks/pseudotime_Analysis.md
-  - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StarvationResponse.md
+  - Initial Cell Atlas Clustering from Cell Ranger: notebooks/cellRangerClustering_Starvation.ipynb
+  - Cell Atlas Clustering and Analysis from kallisto-bustools: notebooks/starvation_Analysis.ipynb
+  - Analysis of Neuron Subpopulations: notebooks/neuronSubpop_Analysis.ipynb
+  - Pseudotime Analysis: notebooks/pseudotime_Analysis.ipynb
+  - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StarvationResponse.ipynb
 - Stimulation Data Analysis:
-  - Cell Atlas Concordance and Perturbation Response: notebooks/stimulation_Analysis.md
-  - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StimulationResponse.md
+  - Cell Atlas Concordance and Perturbation Response: notebooks/stimulation_Analysis.ipynb
+  - Extraction of Differentially Expressed Genes Under Stimulation: notebooks/deSeq2Analysis_StimulationResponse.ipynb
 - Inter-Experimental Analysis:
-  - Comparative Analysis of Cell Atlas Concordance and Perturbation Responses: notebooks/allDistanceCalculations.md
+  - Comparative Analysis of Cell Atlas Concordance and Perturbation Responses: notebooks/allDistanceCalculations.ipynb
 - Explore Multiplexed Datasets:
-  - Generation Cell Atlas with MARIMBA Transcriptome: notebooks/MARIMBAAnnosAnalysis.md
-  - Explore MARIMBA-Annotated Cell Atlas: notebooks/MARIMBAAtlasSearchAndPlot.md
-  - Explore Original Cell Atlas: notebooks/cellAtlasSearchAndPlot.md
+  - Generation Cell Atlas with MARIMBA Transcriptome: notebooks/MARIMBAAnnosAnalysis.ipynb
+  - Explore MARIMBA-Annotated Cell Atlas: notebooks/MARIMBAAtlasSearchAndPlot.ipynb
+  - Explore Original Cell Atlas: notebooks/cellAtlasSearchAndPlot.ipynb
 
 plugins:
   - mkdocs-jupyter
