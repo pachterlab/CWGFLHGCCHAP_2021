@@ -25,6 +25,8 @@ Interactive Browser:
 
 [UCSC Genome Browser Page with Interactive Browser](http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt)
 
+![](https://github.com/pachterlab/CWGFLHGCCHAP_2021/blob/master/browser.png?raw=true "UCSC Browser")
+
 
 ## Notebooks Directory Contents
 
