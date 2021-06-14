@@ -10,6 +10,22 @@ All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are 
 
 All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
+## Quick Links
+Data Files:
+
+[Raw Counts for Starved/Control Animals](http://dx.doi.org/10.22002/D1.1797)
+
+[Log-normalized Counts with HVGs for Starved/Control Animals](http://dx.doi.org/10.22002/D1.1796)
+
+Fastq Processing Notebooks:
+
+[kallisto Fastq Processing for All Experiments](https://github.com/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/Preprocessing/cDNAFiltering/kallistoBusRuns_StarvAndStim.ipynb)
+
+Interactive Browser:
+
+[UCSC Genome Browser Page with Interactive Browser](http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt)
+
+
 ## Notebooks Directory Contents
 
 1) **Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing**
