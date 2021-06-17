@@ -7,7 +7,22 @@ All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are 
 
 All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
-## All Analysis Notebooks
+## Quick Links
+Data Files:
+
+[Raw Counts for Starved/Control Animals](http://dx.doi.org/10.22002/D1.1797)
+
+[Log-normalized Counts with HVGs for Starved/Control Animals](http://dx.doi.org/10.22002/D1.1796)
+
+
+Interactive Browser:
+
+[UCSC Genome Browser Page with Interactive Browser](http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt)
+
+![](https://github.com/pachterlab/CWGFLHGCCHAP_2021/blob/master/browser.png?raw=true "UCSC Browser")
+
+
+## Analysis Notebooks
 
 **1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing**
 
@@ -79,9 +94,9 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 		- Output: Anndata object of cell x gene count matrices for neural cells with clusters and marker genes for subpopulations
     
 
-    - pseudotime_Analysis.ipynb
+    - fullTrajAnalysis.ipynb
       
-        - Pseudotime analysis of neural and nematocyte cell types from the i-cell population
+        - Pseudotime analysis of neural, nematocyte, and gland cell types from the i-cell population
 		- Input: Clustered anndata object from starvation_Analysis
 		- Output: Ranking of genes contributing to pseudotime trajectories of neural and nematocyte cell types
     
@@ -117,13 +132,6 @@ All saved/processed data used for analysis is streamed to the notebooks from [Ca
 
 **5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas**
 
-    - MARIMBAAnnosAnalysis.ipynb
-      
-        - Quantification of raw starvation cDNA fastqs with kallisto-bustools workflow and MARIMBA annotation
-		- Input: Raw cDNA starvation fastqs
-		- Output: Anndata object of cell x gene count matrices for starvation experiment with clusters and highly variable genes (compared to starvation_Analysis)
-
-    
     - MARIMBAAtlasSearchAndPlot.ipynb
       
         - Plotting of genes of interest on MARIMBA-quantified anndata object

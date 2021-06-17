@@ -20,7 +20,7 @@
     
     
       
-        <title>Generation Cell Atlas with MARIMBA Transcriptome - WHAMSeqAnalysis</title>
+        <title>MARIMBAAnnosAnalysis - WHAMSeqAnalysis</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Generation Cell Atlas with MARIMBA Transcriptome
+              MARIMBAAnnosAnalysis
             
           </span>
         </div>
@@ -367,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pseudotime_Analysis/" class="md-nav__link">
+      <a href="../fullTrajAnalysis/" class="md-nav__link">
         Pseudotime Analysis
       </a>
     </li>
@@ -496,14 +496,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
       
       <label class="md-nav__link" for="nav-7">
         Explore Multiplexed Datasets
@@ -516,119 +514,6 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
-          
-            
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Generation Cell Atlas with MARIMBA Transcriptome
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Generation Cell Atlas with MARIMBA Transcriptome
-      </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#download-data" class="md-nav__link">
-    Download Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-packages" class="md-nav__link">
-    Import Packages
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-kallisto-bus-on-data-with-marimba-annotation" class="md-nav__link">
-    Run kallisto bus on data with MARIMBA annotation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#read-in-saved-dataset" class="md-nav__link">
-    Read in saved dataset
-  </a>
-  
-    <nav class="md-nav" aria-label="Read in saved dataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#plot-overlap-in-cell-types" class="md-nav__link">
-    Plot Overlap in Cell Types
-  </a>
-  
-    <nav class="md-nav" aria-label="Plot Overlap in Cell Types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#comparing-gene-markers" class="md-nav__link">
-    Comparing Gene Markers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#neuron-analysis" class="md-nav__link">
-    Neuron Analysis
-  </a>
-  
-    <nav class="md-nav" aria-label="Neuron Analysis">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-if-application-of-trinity-louvain-clusters-is-appropriate" class="md-nav__link">
-    Check if application of TRINITY Louvain clusters is appropriate
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
           
             
   
@@ -773,7 +658,7 @@
                   </a>
                 
                 
-                  <h1>Generation Cell Atlas with MARIMBA Transcriptome</h1>
+                  <h1>MARIMBAAnnosAnalysis</h1>
                 
                 
 <div class="notebook-content">
@@ -15287,9 +15172,9 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link {
 
 
 
-<div id="5026a6c6-bebc-4ca1-9dc7-344691fd8bc5" class="jupyter-widgets jp-OutputArea-output ">
+<div id="aa2693c5-f361-4a12-9cb0-f45501dbe54c" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('5026a6c6-bebc-4ca1-9dc7-344691fd8bc5');
+var element = document.getElementById('aa2693c5-f361-4a12-9cb0-f45501dbe54c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "81de6865568b4dcc8a0fb3a72f370afb", "version_minor": 0, "version_major": 2}
@@ -15309,9 +15194,9 @@ var element = document.getElementById('5026a6c6-bebc-4ca1-9dc7-344691fd8bc5');
 
 
 
-<div id="248c67dc-f1de-4364-a1c1-d882c33ea18e" class="jupyter-widgets jp-OutputArea-output ">
+<div id="27e3a516-e75c-407b-b811-d16328e63fc9" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('248c67dc-f1de-4364-a1c1-d882c33ea18e');
+var element = document.getElementById('27e3a516-e75c-407b-b811-d16328e63fc9');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "1eb17b4527a643d3825d710bff4f5362", "version_minor": 0, "version_major": 2}
@@ -15390,9 +15275,9 @@ var element = document.getElementById('248c67dc-f1de-4364-a1c1-d882c33ea18e');
 
 
 
-<div id="d201ec98-6b3b-4ac5-af78-08ded1f14bd1" class="jupyter-widgets jp-OutputArea-output ">
+<div id="6ff9f4f3-e752-4d01-abf3-f73511b08cdc" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('d201ec98-6b3b-4ac5-af78-08ded1f14bd1');
+var element = document.getElementById('6ff9f4f3-e752-4d01-abf3-f73511b08cdc');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f489e7ef1c474958895d427f67f46d13", "version_minor": 0, "version_major": 2}
@@ -15412,9 +15297,9 @@ var element = document.getElementById('d201ec98-6b3b-4ac5-af78-08ded1f14bd1');
 
 
 
-<div id="5a599051-cc16-4f14-8568-97a95eda6898" class="jupyter-widgets jp-OutputArea-output ">
+<div id="228d9803-baf4-4499-ae7d-c16975075548" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('5a599051-cc16-4f14-8568-97a95eda6898');
+var element = document.getElementById('228d9803-baf4-4499-ae7d-c16975075548');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "e73f61b12afc4d8d96bc85fbb96f3c94", "version_minor": 0, "version_major": 2}
@@ -15434,9 +15319,9 @@ var element = document.getElementById('5a599051-cc16-4f14-8568-97a95eda6898');
 
 
 
-<div id="af5b9e09-7132-433b-b6f5-79a4366069ef" class="jupyter-widgets jp-OutputArea-output ">
+<div id="231dca1e-5d2b-4837-9f1a-0ceb9b59b513" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('af5b9e09-7132-433b-b6f5-79a4366069ef');
+var element = document.getElementById('231dca1e-5d2b-4837-9f1a-0ceb9b59b513');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "2ca0a3c5d2ae4231a102c545ad58bb5d", "version_minor": 0, "version_major": 2}
@@ -15512,9 +15397,9 @@ var element = document.getElementById('af5b9e09-7132-433b-b6f5-79a4366069ef');
 
 
 
-<div id="b50b7c80-e4f7-435b-a59f-b043e9d70a0c" class="jupyter-widgets jp-OutputArea-output ">
+<div id="4005ba62-aeba-41cb-aa86-2e24a1dde99a" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('b50b7c80-e4f7-435b-a59f-b043e9d70a0c');
+var element = document.getElementById('4005ba62-aeba-41cb-aa86-2e24a1dde99a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "c0147ad862914803b4182869d47071d9", "version_minor": 0, "version_major": 2}
@@ -15534,9 +15419,9 @@ var element = document.getElementById('b50b7c80-e4f7-435b-a59f-b043e9d70a0c');
 
 
 
-<div id="01797f01-e545-4eec-b3c9-080ab592fdcc" class="jupyter-widgets jp-OutputArea-output ">
+<div id="1ac06904-c49f-4150-b740-9ebf13481912" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('01797f01-e545-4eec-b3c9-080ab592fdcc');
+var element = document.getElementById('1ac06904-c49f-4150-b740-9ebf13481912');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "4b645a4b950a45e9b4eaa734063912a4", "version_minor": 0, "version_major": 2}
@@ -15647,7 +15532,7 @@ var element = document.getElementById('01797f01-e545-4eec-b3c9-080ab592fdcc');
         
         <div class="CodeMirror cm-s-jupyter">
     <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">anndata</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">scanpy</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">scanpy</span><span class="o">==</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span>
 <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">louvain</span>
 </pre></div>
 
@@ -17640,41 +17525,6 @@ height=447
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../allDistanceCalculations/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Comparative Analysis of Cell Atlas Concordance and Perturbation Responses
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../MARIMBAAtlasSearchAndPlot/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Explore MARIMBA-Annotated Cell Atlas
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

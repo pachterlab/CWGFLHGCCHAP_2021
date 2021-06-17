@@ -31,7 +31,7 @@ nav:
   - Initial Cell Atlas Clustering from Cell Ranger: notebooks/cellRangerClustering_Starvation.ipynb
   - Cell Atlas Clustering and Analysis from kallisto-bustools: notebooks/starvation_Analysis.ipynb
   - Analysis of Neuron Subpopulations: notebooks/neuronSubpop_Analysis.ipynb
-  - Pseudotime Analysis: notebooks/pseudotime_Analysis.ipynb
+  - Pseudotime Analysis: notebooks/fullTrajAnalysis.ipynb
   - Extraction of Differentially Expressed Genes Under Starvation: notebooks/deSeq2Analysis_StarvationResponse.ipynb
 - Stimulation Data Analysis:
   - Cell Atlas Concordance and Perturbation Response: notebooks/stimulation_Analysis.ipynb
@@ -39,7 +39,6 @@ nav:
 - Inter-Experimental Analysis:
   - Comparative Analysis of Cell Atlas Concordance and Perturbation Responses: notebooks/allDistanceCalculations.ipynb
 - Explore Multiplexed Datasets:
-  - Generation Cell Atlas with MARIMBA Transcriptome: notebooks/MARIMBAAnnosAnalysis.ipynb
   - Explore MARIMBA-Annotated Cell Atlas: notebooks/MARIMBAAtlasSearchAndPlot.ipynb
   - Explore Original Cell Atlas: notebooks/cellAtlasSearchAndPlot.ipynb
 
