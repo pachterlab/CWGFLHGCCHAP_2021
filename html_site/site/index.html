@@ -690,7 +690,9 @@
                 <h1 id="analysis-of-multiplexed-single-cell-clytia-medusae-experiments">Analysis of Multiplexed, Single-Cell <em>Clytia</em> Medusae Experiments<a class="headerlink" href="#analysis-of-multiplexed-single-cell-clytia-medusae-experiments" title="Permanent link">&para;</a></h1>
 <p>Notebooks for reproducing all figures and analysis in the <strong>Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of <em>Clytia</em> Medusae Cell Types</strong> preprint. <a href="https://doi.org/10.1101/2021.01.22.427844">doi</a></p>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.</p>
+<p>All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook, just click on the <a href="https://colab.research.google.com"><img alt="Open In Collab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> symbol.</p>
+<p>An intro to using Colab can be found <a href="https://colab.research.google.com">here</a>. Briefly, run each code cell by selecting the cell and executing Command/Ctrl+Enter. Code cells can be edited by simply clicking on the cell to start typing.</p>
+<p>To view expression profiles of genes of interest use the <a href="http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&amp;hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt">UCSC Genome Browser Page with Interactive Browser</a> or the <a href="https://pachterlab.github.io/CWGFLHGCCHAP_2021/notebooks/cellAtlasSearchAndPlot/">Colab Notebook</a> for generating images.</p>
 <p>All saved/processed data used for analysis is streamed to the notebooks from <a href="https://data.caltech.edu/">CaltechData</a>.</p>
 <h2 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>
 <p>Data Files:</p>
@@ -700,8 +702,8 @@
 <p><a href="http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&amp;hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt">UCSC Genome Browser Page with Interactive Browser</a></p>
 <p><img alt="" src="https://github.com/pachterlab/CWGFLHGCCHAP_2021/blob/master/browser.png?raw=true" title="UCSC Browser" /></p>
 <h2 id="analysis-notebooks">Analysis Notebooks<a class="headerlink" href="#analysis-notebooks" title="Permanent link">&para;</a></h2>
-<p><strong>1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="n">a</span><span class="p">)</span> <span class="n">ClickTagDemultiplexing</span>
+<p><strong>1) Pre-processing - All notebooks for ClickTag and cDNA Library Demultiplexing</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">a</span><span class="p">)</span> <span class="n">ClickTag</span> <span class="n">Pre</span><span class="o">-</span><span class="n">processing</span>
 
   <span class="o">-</span> <span class="n">cellRangerClickTagCounts</span><span class="o">.</span><span class="n">ipynb</span>
 
@@ -725,7 +727,7 @@
     <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">ClickTags</span> <span class="ow">and</span> <span class="n">filtered</span> <span class="n">cell</span> <span class="n">barcodes</span>
 
 
-<span class="n">b</span><span class="p">)</span> <span class="n">cDNAFiltering</span>
+<span class="n">b</span><span class="p">)</span> <span class="n">cDNA</span> <span class="n">Pre</span><span class="o">-</span><span class="n">processing</span>
 
   <span class="o">-</span> <span class="n">filterStarvCells_ClickTags</span><span class="o">.</span><span class="n">ipynb</span>
 
@@ -741,7 +743,7 @@
     <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Anndata</span> <span class="n">objects</span> <span class="n">of</span> <span class="n">cell</span> <span class="n">x</span> <span class="n">gene</span> <span class="n">count</span> <span class="n">matrices</span> <span class="k">for</span> <span class="n">each</span> <span class="n">experiment</span>
 </code></pre></div>
 
-<p><strong>2) CellAtlasAnalysis  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment</strong></p>
+<p><strong>2) Cell Atlas and Perturbation Response  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">cellRangerClustering_Starvation</span><span class="o">.</span><span class="n">ipynb</span>
 
     <span class="o">-</span> <span class="n">Initial</span> <span class="n">clustering</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">from</span> <span class="n">starvation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">raw</span> <span class="n">Cell</span> <span class="n">Ranger</span> <span class="p">(</span><span class="n">cDNA</span><span class="p">)</span> <span class="n">matrices</span>
@@ -776,7 +778,7 @@
     <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Ranking</span> <span class="n">of</span> <span class="n">genes</span> <span class="n">contributing</span> <span class="n">to</span> <span class="n">pseudotime</span> <span class="n">trajectories</span> <span class="n">of</span> <span class="n">neural</span> <span class="ow">and</span> <span class="n">nematocyte</span> <span class="n">cell</span> <span class="n">types</span>
 </code></pre></div>
 
-<p><strong>3) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment</strong></p>
+<p><strong>3) Stimulation Data Analysis - Clustering and Perturbation Response Analysis for Stimulation Experiment</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">stimulation_Analysis</span><span class="o">.</span><span class="n">ipynb</span>
 
     <span class="o">-</span> <span class="n">Clustering</span> <span class="n">of</span> <span class="n">cells</span> <span class="n">from</span> <span class="n">stimulation</span> <span class="n">experiment</span> <span class="n">from</span> <span class="n">kallisto</span><span class="o">-</span><span class="n">processed</span> <span class="n">matrices</span>
@@ -791,7 +793,7 @@
     <span class="o">-</span> <span class="n">Output</span><span class="p">:</span> <span class="n">Genes</span> <span class="n">that</span> <span class="n">are</span> <span class="n">differentially</span> <span class="n">expressed</span> <span class="n">under</span> <span class="n">stimulation</span> <span class="p">(</span><span class="n">DI</span><span class="o">/</span><span class="n">KCl</span><span class="p">)</span> <span class="p">(</span><span class="s1">&#39;perturbed&#39;</span> <span class="n">genes</span><span class="p">)</span>
 </code></pre></div>
 
-<p><strong>4) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects</strong></p>
+<p><strong>4) Inter-Experimental Analysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">allDistanceCalculations</span><span class="p">.</span><span class="n">ipynb</span>
 
     <span class="o">-</span> <span class="n">Calculations</span> <span class="k">for</span> <span class="n">inter</span><span class="o">-</span> <span class="k">and</span> <span class="n">intra</span><span class="o">-</span> <span class="k">cluster</span> <span class="n">distances</span> <span class="k">in</span> <span class="n">starvation</span> <span class="k">and</span> <span class="n">stimulation</span> <span class="n">experiments</span> 
@@ -800,7 +802,7 @@
 </code></pre></div>
 
 <p><em>---------- For (User) Gene Searching and Plotting ----------</em></p>
-<p><strong>5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas</strong></p>
+<p><strong>5) Explore Multiplexed Datasets - Notebooks for Exploring and Searching Cell Atlas</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="o">-</span> <span class="n">MARIMBAAtlasSearchAndPlot</span><span class="p">.</span><span class="n">ipynb</span>
 
     <span class="o">-</span> <span class="n">Plotting</span> <span class="k">of</span> <span class="n">genes</span> <span class="k">of</span> <span class="n">interest</span> <span class="k">on</span> <span class="n">MARIMBA</span><span class="o">-</span><span class="n">quantified</span> <span class="n">anndata</span> <span class="k">object</span>

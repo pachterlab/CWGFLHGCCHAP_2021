@@ -3,7 +3,12 @@ Notebooks for reproducing all figures and analysis in the **Whole Animal Multipl
 
 ## Getting Started
 
-All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.
+All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook, just click on the [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com) symbol.
+
+An intro to using Colab can be found [here](https://colab.research.google.com). Briefly, run each code cell by selecting the cell and executing Command/Ctrl+Enter. Code cells can be edited by simply clicking on the cell to start typing.
+
+To view expression profiles of genes of interest use the [UCSC Genome Browser Page with Interactive Browser](http://evolution.caltech.edu/genomebrowser/cgi-bin/hgGateway?genome=clyHem1&hubUrl=http://evolution.caltech.edu/genomebrowser/hubExamples/hubAssembly/clytia/hub.txt) or the [Colab Notebook](https://pachterlab.github.io/CWGFLHGCCHAP_2021/notebooks/cellAtlasSearchAndPlot/) for generating images.
+
 
 All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
@@ -24,9 +29,9 @@ Interactive Browser:
 
 ## Analysis Notebooks
 
-**1) Preprocessing - All notebooks for ClickTag and cDNA Library Demultiplexing**
+**1) Pre-processing - All notebooks for ClickTag and cDNA Library Demultiplexing**
 
-    a) ClickTagDemultiplexing
+    a) ClickTag Pre-processing
     
       - cellRangerClickTagCounts.ipynb
       
@@ -36,21 +41,21 @@ Interactive Browser:
       
       
       
-      - kallistobusStarvClickTags.ipynb
+      - kallistobusStarvClickTags.ipynb 
       
         - Demultiplexing of ClickTag fastqs for starvation experiment with kallisto-bustools workflow
 		- Input: Raw ClickTag fastqs
 		- Output: Count matrices for ClickTags (compared to previour count matrices)
       
       
-      - kallistobusStimClickTags.ipynb
+      - kallistobusStimClickTags.ipynb 
       
         - Demultiplexing of ClickTag fastqs for stimulation experiment with kallisto-bustools workflow
 		- Input: Raw ClickTag fastqs
 		- Output: Count matrices for ClickTags and filtered cell barcodes
 
     
-    b) cDNAFiltering
+    b) cDNA Pre-processing
     
       - filterStarvCells_ClickTags.ipynb
       
@@ -65,7 +70,7 @@ Interactive Browser:
 		- Input: Raw cDNA fastqs
 		- Output: Anndata objects of cell x gene count matrices for each experiment
 	
-**2) CellAtlasAnalysis  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment**
+**2) Cell Atlas and Perturbation Response  - All notebooks for Clustering and Perturbation Response Analysis for Starvation Experiment**
 
     - cellRangerClustering_Starvation.ipynb
       
@@ -102,7 +107,7 @@ Interactive Browser:
     
   
  
-**3) StimulationAnalysis - Clustering and Perturbation Response Analysis for Stimulation Experiment**
+**3) Stimulation Data Analysis - Clustering and Perturbation Response Analysis for Stimulation Experiment**
 
     - stimulation_Analysis.ipynb
       
@@ -118,7 +123,7 @@ Interactive Browser:
 		- Output: Genes that are differentially expressed under stimulation (DI/KCl) ('perturbed' genes)
     
 
-**4) ComparativeDistanceAnalysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects**
+**4) Inter-Experimental Analysis - All Distance-based Analysis for Cell Type/State Delineation and Cross-Experiment Batch Effects**
   
     - allDistanceCalculations.ipynb
       
@@ -130,7 +135,7 @@ Interactive Browser:
    
 *---------- For (User) Gene Searching and Plotting ----------*
 
-**5) SearchAndPlotInteractive - Notebooks for Exploring and Searching Cell Atlas**
+**5) Explore Multiplexed Datasets - Notebooks for Exploring and Searching Cell Atlas**
 
     - MARIMBAAtlasSearchAndPlot.ipynb
       
