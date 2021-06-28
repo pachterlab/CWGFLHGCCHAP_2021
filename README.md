@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/263981523.svg)](https://zenodo.org/badge/latestdoi/263981523)
 # Analysis of Multiplexed, Single-Cell *Clytia* Medusae Experiments
 
-Notebooks for reproducing all figures and analysis in the *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Plasticity of *Clytia* Medusae Cell Types* [preprint](https://doi.org/10.1101/2021.01.22.427844).
+Notebooks for reproducing all figures and analysis in the *Whole Animal Multiplexed Single-Cell RNA-Seq Reveals Transcriptional Shifts Across *Clytia* Medusae Cell Types* [preprint](https://doi.org/10.1101/2021.01.22.427844).
 
 ## Getting Started
 
