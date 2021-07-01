@@ -100,7 +100,7 @@ Interactive Browser:
 		- Output: Anndata object of cell x gene count matrices for neural cells with clusters and marker genes for subpopulations
     
 
-    - fullTraj_Analysis.ipynb
+    - fullTrajAnalysis.ipynb
       
         - Pseudotime analysis of neural and nematocyte cell types from the i-cell population
 		- Input: Clustered anndata object from starvation_Analysis
