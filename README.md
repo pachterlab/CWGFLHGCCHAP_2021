@@ -6,7 +6,8 @@ Notebooks for reproducing all figures and analysis in the *Whole Animal Multiple
 ## Getting Started
 
 All notebooks, saved as .ipynb's, can be run from Google Colab. Colab links are included in every notebook.
-[Walkthrough of notebooks here](https://pachterlab.github.io/CWGFLHGCCHAP_2021/).
+
+[Walkthrough of notebooks here](https://pachterlab.github.io/CWGFLHGCCHAP_2021/). Make your own gene expression plots [here](https://github.com/pachterlab/CWGFLHGCCHAP_2021/blob/master/notebooks/SearchAndPlotInteractive/cellAtlasSearchAndPlot.ipynb).
 
 All saved/processed data used for analysis is streamed to the notebooks from [CaltechData](https://data.caltech.edu/).
 
